@@ -30,20 +30,28 @@ namespace UniversitySQL
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.lblUni = new System.Windows.Forms.Label();
             this.pnlRight = new System.Windows.Forms.Panel();
             this.btnAddNew = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnStatistika = new System.Windows.Forms.Button();
             this.btnDalykai = new System.Windows.Forms.Button();
             this.btnStudentai = new System.Windows.Forms.Button();
             this.btnDestotojai = new System.Windows.Forms.Button();
             this.btnFakultetai = new System.Windows.Forms.Button();
             this.pnlCenter = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dataGrid = new System.Windows.Forms.DataGridView();
+            this.fakultetasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dalykasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnlRight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlCenter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fakultetasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dalykasBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
@@ -109,14 +117,24 @@ namespace UniversitySQL
             this.btnAddNew.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAddNew.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::UniversitySQL.Properties.Resources.vu_logo;
+            this.pictureBox1.Location = new System.Drawing.Point(-1, 248);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(135, 139);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnStatistika
             // 
             this.btnStatistika.FlatAppearance.BorderSize = 0;
             this.btnStatistika.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStatistika.Font = new System.Drawing.Font("Trajan Pro", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStatistika.Location = new System.Drawing.Point(0, 120);
+            this.btnStatistika.Location = new System.Drawing.Point(0, 115);
             this.btnStatistika.Name = "btnStatistika";
-            this.btnStatistika.Size = new System.Drawing.Size(134, 23);
+            this.btnStatistika.Size = new System.Drawing.Size(134, 36);
             this.btnStatistika.TabIndex = 0;
             this.btnStatistika.Text = "Statistika";
             this.btnStatistika.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -127,69 +145,80 @@ namespace UniversitySQL
             this.btnDalykai.FlatAppearance.BorderSize = 0;
             this.btnDalykai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDalykai.Font = new System.Drawing.Font("Trajan Pro", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDalykai.Location = new System.Drawing.Point(0, 91);
+            this.btnDalykai.Location = new System.Drawing.Point(0, 86);
             this.btnDalykai.Name = "btnDalykai";
-            this.btnDalykai.Size = new System.Drawing.Size(134, 23);
+            this.btnDalykai.Size = new System.Drawing.Size(134, 36);
             this.btnDalykai.TabIndex = 0;
             this.btnDalykai.Text = "Dalykai";
             this.btnDalykai.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDalykai.UseVisualStyleBackColor = true;
+            this.btnDalykai.Click += new System.EventHandler(this.btnDalykai_Click);
             // 
             // btnStudentai
             // 
             this.btnStudentai.FlatAppearance.BorderSize = 0;
             this.btnStudentai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStudentai.Font = new System.Drawing.Font("Trajan Pro", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStudentai.Location = new System.Drawing.Point(0, 62);
+            this.btnStudentai.Location = new System.Drawing.Point(0, 57);
             this.btnStudentai.Name = "btnStudentai";
-            this.btnStudentai.Size = new System.Drawing.Size(134, 23);
+            this.btnStudentai.Size = new System.Drawing.Size(134, 36);
             this.btnStudentai.TabIndex = 0;
             this.btnStudentai.Text = "Studentai";
             this.btnStudentai.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStudentai.UseVisualStyleBackColor = true;
+            this.btnStudentai.Click += new System.EventHandler(this.btnStudentai_Click);
             // 
             // btnDestotojai
             // 
             this.btnDestotojai.FlatAppearance.BorderSize = 0;
             this.btnDestotojai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDestotojai.Font = new System.Drawing.Font("Trajan Pro", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDestotojai.Location = new System.Drawing.Point(0, 33);
+            this.btnDestotojai.Location = new System.Drawing.Point(0, 28);
             this.btnDestotojai.Name = "btnDestotojai";
-            this.btnDestotojai.Size = new System.Drawing.Size(134, 23);
+            this.btnDestotojai.Size = new System.Drawing.Size(134, 36);
             this.btnDestotojai.TabIndex = 0;
             this.btnDestotojai.Text = "Dėstytojai";
             this.btnDestotojai.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDestotojai.UseVisualStyleBackColor = true;
+            this.btnDestotojai.Click += new System.EventHandler(this.btnDestotojai_Click);
             // 
             // btnFakultetai
             // 
             this.btnFakultetai.FlatAppearance.BorderSize = 0;
             this.btnFakultetai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFakultetai.Font = new System.Drawing.Font("Trajan Pro", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFakultetai.Location = new System.Drawing.Point(0, 4);
+            this.btnFakultetai.Location = new System.Drawing.Point(0, -1);
             this.btnFakultetai.Name = "btnFakultetai";
-            this.btnFakultetai.Size = new System.Drawing.Size(134, 23);
+            this.btnFakultetai.Size = new System.Drawing.Size(134, 36);
             this.btnFakultetai.TabIndex = 0;
             this.btnFakultetai.Text = "Fakultetai";
             this.btnFakultetai.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFakultetai.UseVisualStyleBackColor = true;
+            this.btnFakultetai.Click += new System.EventHandler(this.btnFakultetai_Click);
             // 
             // pnlCenter
             // 
+            this.pnlCenter.Controls.Add(this.dataGrid);
             this.pnlCenter.Location = new System.Drawing.Point(153, 52);
             this.pnlCenter.Name = "pnlCenter";
             this.pnlCenter.Size = new System.Drawing.Size(571, 386);
             this.pnlCenter.TabIndex = 3;
             // 
-            // pictureBox1
+            // dataGrid
             // 
-            this.pictureBox1.Image = global::UniversitySQL.Properties.Resources.vu_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(-1, 248);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(135, 139);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid.Location = new System.Drawing.Point(4, 4);
+            this.dataGrid.Name = "dataGrid";
+            this.dataGrid.Size = new System.Drawing.Size(564, 379);
+            this.dataGrid.TabIndex = 0;
+            // 
+            // fakultetasBindingSource
+            // 
+            this.fakultetasBindingSource.DataSource = typeof(UniversitySQL.Fakultetas);
+            // 
+            // dalykasBindingSource
+            // 
+            this.dalykasBindingSource.DataSource = typeof(UniversitySQL.Dalykas);
             // 
             // MainWindow
             // 
@@ -209,6 +238,10 @@ namespace UniversitySQL
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.pnlRight.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlCenter.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fakultetasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dalykasBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,6 +261,9 @@ namespace UniversitySQL
         private System.Windows.Forms.Button btnFakultetai;
         private System.Windows.Forms.Panel pnlCenter;
         private System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.DataGridView dataGrid;
+        private System.Windows.Forms.BindingSource dalykasBindingSource;
+        private System.Windows.Forms.BindingSource fakultetasBindingSource;
     }
 }
 

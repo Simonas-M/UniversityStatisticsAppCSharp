@@ -9,3 +9,7 @@ c:\users\simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversityS
 c:\users\simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\obj\Debug\UniversitySQL.exe
 c:\users\simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\obj\Debug\UniversitySQL.pdb
 c:\users\simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\obj\Debug\UniversitySQL.MainWindow.resources
+C:\Users\Simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\bin\Debug\EntityFramework.dll
+C:\Users\Simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\bin\Debug\EntityFramework.xml
+C:\Users\Simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\bin\Debug\EntityFramework.SqlServer.xml

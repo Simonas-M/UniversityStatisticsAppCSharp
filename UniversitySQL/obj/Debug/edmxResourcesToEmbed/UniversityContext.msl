@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UniversitySQLStoreContainer" CdmEntityContainer="UniversityContext">
+    <EntitySetMapping Name="Dalykas">
+      <EntityTypeMapping TypeName="UniversitySQL.Dalykas">
+        <MappingFragment StoreEntitySet="Dalykas">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Pavadinimas" ColumnName="Pavadinimas" />
+          <ScalarProperty Name="Kreditu_Sk" ColumnName="Kreditu_Sk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Destytojas">
+      <EntityTypeMapping TypeName="UniversitySQL.Destytojas">
+        <MappingFragment StoreEntitySet="Destytojas">
+          <ScalarProperty Name="Asmens_Kodas" ColumnName="Asmens_Kodas" />
+          <ScalarProperty Name="Fakultetas" ColumnName="Fakultetas" />
+          <ScalarProperty Name="Vardas" ColumnName="Vardas" />
+          <ScalarProperty Name="Pavarde" ColumnName="Pavarde" />
+          <ScalarProperty Name="Laipsnis" ColumnName="Laipsnis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fakultetas">
+      <EntityTypeMapping TypeName="UniversitySQL.Fakultetas">
+        <MappingFragment StoreEntitySet="Fakultetas">
+          <ScalarProperty Name="Pavadinimas" ColumnName="Pavadinimas" />
+          <ScalarProperty Name="Adresas" ColumnName="Adresas" />
+          <ScalarProperty Name="Telefono_Nr" ColumnName="Telefono_Nr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Studentas">
+      <EntityTypeMapping TypeName="UniversitySQL.Studentas">
+        <MappingFragment StoreEntitySet="Studentas">
+          <ScalarProperty Name="LSP_Nr" ColumnName="LSP_Nr" />
+          <ScalarProperty Name="Fakultetas" ColumnName="Fakultetas" />
+          <ScalarProperty Name="Vardas" ColumnName="Vardas" />
+          <ScalarProperty Name="Pavarde" ColumnName="Pavarde" />
+          <ScalarProperty Name="Gimimas" ColumnName="Gimimas" />
+          <ScalarProperty Name="Pakopa" ColumnName="Pakopa" />
+          <ScalarProperty Name="Kursas" ColumnName="Kursas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Destomi_dalykai" TypeName="UniversitySQL.Destomi_dalykai" StoreEntitySet="Destomi_dalykai">
+      <EndProperty Name="Dalykas">
+        <ScalarProperty Name="ID" ColumnName="Dalyko_ID" />
+      </EndProperty>
+      <EndProperty Name="Destytojas">
+        <ScalarProperty Name="Asmens_Kodas" ColumnName="Destytojo_AK" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Studijuojami_dalykai" TypeName="UniversitySQL.Studijuojami_dalykai" StoreEntitySet="Studijuojami_dalykai">
+      <EndProperty Name="Dalykas">
+        <ScalarProperty Name="ID" ColumnName="Dalyko_ID" />
+      </EndProperty>
+      <EndProperty Name="Studentas">
+        <ScalarProperty Name="LSP_Nr" ColumnName="Studento_LSP" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

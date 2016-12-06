@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UniversitySQL" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Dalykas">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Pavadinimas" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Kreditu_Sk" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Destytojas" Relationship="Self.Destomi_dalykai" FromRole="Dalykas" ToRole="Destytojas" />
+    <NavigationProperty Name="Studentas" Relationship="Self.Studijuojami_dalykai" FromRole="Dalykas" ToRole="Studentas" />
+  </EntityType>
+  <EntityType Name="Destytojas">
+    <Key>
+      <PropertyRef Name="Asmens_Kodas" />
+    </Key>
+    <Property Name="Asmens_Kodas" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Fakultetas" Type="String" MaxLength="38" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Vardas" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pavarde" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Laipsnis" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Fakultetas1" Relationship="Self.FK__Destytoja__Fakul__2C3393D0" FromRole="Destytojas" ToRole="Fakultetas" />
+    <NavigationProperty Name="Dalykas" Relationship="Self.Destomi_dalykai" FromRole="Destytojas" ToRole="Dalykas" />
+  </EntityType>
+  <EntityType Name="Fakultetas">
+    <Key>
+      <PropertyRef Name="Pavadinimas" />
+    </Key>
+    <Property Name="Pavadinimas" Type="String" MaxLength="38" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Adresas" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono_Nr" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Destytojas" Relationship="Self.FK__Destytoja__Fakul__2C3393D0" FromRole="Fakultetas" ToRole="Destytojas" />
+    <NavigationProperty Name="Studentas" Relationship="Self.FK__Studentas__Fakul__30F848ED" FromRole="Fakultetas" ToRole="Studentas" />
+  </EntityType>
+  <EntityType Name="Studentas">
+    <Key>
+      <PropertyRef Name="LSP_Nr" />
+    </Key>
+    <Property Name="LSP_Nr" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Fakultetas" Type="String" MaxLength="38" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Vardas" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pavarde" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gimimas" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Pakopa" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Kursas" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Fakultetas1" Relationship="Self.FK__Studentas__Fakul__30F848ED" FromRole="Studentas" ToRole="Fakultetas" />
+    <NavigationProperty Name="Dalykas" Relationship="Self.Studijuojami_dalykai" FromRole="Studentas" ToRole="Dalykas" />
+  </EntityType>
+  <Association Name="FK__Destytoja__Fakul__2C3393D0">
+    <End Role="Fakultetas" Type="Self.Fakultetas" Multiplicity="1" />
+    <End Role="Destytojas" Type="Self.Destytojas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fakultetas">
+        <PropertyRef Name="Pavadinimas" />
+      </Principal>
+      <Dependent Role="Destytojas">
+        <PropertyRef Name="Fakultetas" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Studentas__Fakul__30F848ED">
+    <End Role="Fakultetas" Type="Self.Fakultetas" Multiplicity="1" />
+    <End Role="Studentas" Type="Self.Studentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fakultetas">
+        <PropertyRef Name="Pavadinimas" />
+      </Principal>
+      <Dependent Role="Studentas">
+        <PropertyRef Name="Fakultetas" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Destomi_dalykai">
+    <End Role="Dalykas" Type="Self.Dalykas" Multiplicity="*" />
+    <End Role="Destytojas" Type="Self.Destytojas" Multiplicity="*" />
+  </Association>
+  <Association Name="Studijuojami_dalykai">
+    <End Role="Dalykas" Type="Self.Dalykas" Multiplicity="*" />
+    <End Role="Studentas" Type="Self.Studentas" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="UniversityContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Dalykas" EntityType="Self.Dalykas" />
+    <EntitySet Name="Destytojas" EntityType="Self.Destytojas" />
+    <EntitySet Name="Fakultetas" EntityType="Self.Fakultetas" />
+    <EntitySet Name="Studentas" EntityType="Self.Studentas" />
+    <AssociationSet Name="FK__Destytoja__Fakul__2C3393D0" Association="Self.FK__Destytoja__Fakul__2C3393D0">
+      <End Role="Fakultetas" EntitySet="Fakultetas" />
+      <End Role="Destytojas" EntitySet="Destytojas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Studentas__Fakul__30F848ED" Association="Self.FK__Studentas__Fakul__30F848ED">
+      <End Role="Fakultetas" EntitySet="Fakultetas" />
+      <End Role="Studentas" EntitySet="Studentas" />
+    </AssociationSet>
+    <AssociationSet Name="Destomi_dalykai" Association="Self.Destomi_dalykai">
+      <End Role="Dalykas" EntitySet="Dalykas" />
+      <End Role="Destytojas" EntitySet="Destytojas" />
+    </AssociationSet>
+    <AssociationSet Name="Studijuojami_dalykai" Association="Self.Studijuojami_dalykai">
+      <End Role="Dalykas" EntitySet="Dalykas" />
+      <End Role="Studentas" EntitySet="Studentas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

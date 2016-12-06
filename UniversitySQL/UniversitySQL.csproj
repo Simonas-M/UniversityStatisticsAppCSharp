@@ -48,8 +48,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,6 +72,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dalykas.cs">
+      <DependentUpon>UniversityContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Destytojas.cs">
+      <DependentUpon>UniversityContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Fakultetas.cs">
+      <DependentUpon>UniversityContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +89,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Studentas.cs">
+      <DependentUpon>UniversityContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UniversityContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UniversityContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UniversityContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UniversityContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UniversityContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UniversityContext.edmx</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -82,6 +120,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Dalykas.datasource" />
+    <None Include="Properties\DataSources\Destytojas.datasource" />
+    <None Include="Properties\DataSources\Fakultetas.datasource" />
+    <None Include="Properties\DataSources\MainWindow.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
+    <None Include="Properties\DataSources\Studentas.datasource" />
+    <None Include="Properties\DataSources\UniversityContext.datasource" />
+    <None Include="Properties\DataSources\UniversitySQL.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\UniversitySQL.Properties.Settings.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -91,11 +139,28 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EntityDeploy Include="UniversityContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UniversityContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="UniversityContext.edmx.diagram">
+      <DependentUpon>UniversityContext.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="UniversityContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UniversityContext.edmx</DependentUpon>
+      <LastGenOutput>UniversityContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="UniversityContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UniversityContext.edmx</DependentUpon>
+      <LastGenOutput>UniversityContext.cs</LastGenOutput>
+    </Content>
     <None Include="Resources\vu-logo.jpg" />
     <Content Include="Universitetas.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -116,6 +181,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5aa3a915ba054d538c6a21991ade5597" Name="Diagram1">
+        <EntityTypeShape EntityType="UniversitySQL.Dalykas" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversitySQL.Destytojas" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversitySQL.Fakultetas" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversitySQL.Studentas" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="UniversitySQL.FK__Destytoja__Fakul__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversitySQL.FK__Studentas__Fakul__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversitySQL.Destomi_dalykai" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversitySQL.Studijuojami_dalykai" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
