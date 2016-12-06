@@ -19,6 +19,9 @@ namespace UniversitySQL
         public MainWindow()
         {
             InitializeComponent();
+            this.BackColor = ColorTranslator.FromHtml("#3F51B5");
+            pnlRight.BackColor = ColorTranslator.FromHtml("#7986CB");
+            pnlCenter.BackColor = ColorTranslator.FromHtml("#7986CB");
         }
 
         protected override void WndProc(ref Message m)
@@ -31,6 +34,11 @@ namespace UniversitySQL
         private void btnClose_Click(object sender, EventArgs e)
         {
             Dispose();
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
