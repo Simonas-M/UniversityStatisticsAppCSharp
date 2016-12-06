@@ -1,0 +1,11 @@
+c:\users\simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\bin\Debug\UniversitySQL.exe.config
+c:\users\simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\bin\Debug\Universitetas.mdf
+c:\users\simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\bin\Debug\Universitetas_log.ldf
+c:\users\simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\bin\Debug\UniversitySQL.exe
+c:\users\simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\bin\Debug\UniversitySQL.pdb
+c:\users\simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\obj\Debug\UniversitySQL.csprojResolveAssemblyReference.cache
+c:\users\simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\obj\Debug\UniversitySQL.Properties.Resources.resources
+c:\users\simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\obj\Debug\UniversitySQL.csproj.GenerateResource.Cache
+c:\users\simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\obj\Debug\UniversitySQL.exe
+c:\users\simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\obj\Debug\UniversitySQL.pdb
+c:\users\simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\obj\Debug\UniversitySQL.MainWindow.resources
