@@ -33,7 +33,7 @@ namespace UniversitySQL
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabFakultetas = new System.Windows.Forms.TabPage();
             this.btnConfirmUpdateFakultetas = new System.Windows.Forms.Button();
-            this.lblError = new System.Windows.Forms.Label();
+            this.lblErrorFaculty = new System.Windows.Forms.Label();
             this.btnDeleteFakultetas = new System.Windows.Forms.Button();
             this.btnAddFakultetas = new System.Windows.Forms.Button();
             this.btnUpdateFakultetas = new System.Windows.Forms.Button();
@@ -41,24 +41,30 @@ namespace UniversitySQL
             this.txtAddressFakultetas = new System.Windows.Forms.TextBox();
             this.txtTitleFakultetas = new System.Windows.Forms.TextBox();
             this.tabDalykas = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cmbIDDalykas = new System.Windows.Forms.ComboBox();
+            this.lblErrorCourse = new System.Windows.Forms.Label();
+            this.btnDeleteDalykas = new System.Windows.Forms.Button();
             this.btnAddDalykas = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.btnUpdateDalykas = new System.Windows.Forms.Button();
+            this.txtCreditsDalykas = new System.Windows.Forms.TextBox();
+            this.txtTitleDalykas = new System.Windows.Forms.TextBox();
             this.tabDestytojas = new System.Windows.Forms.TabPage();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.btnDeleteDestytojas = new System.Windows.Forms.Button();
+            this.btnAddDestytojas = new System.Windows.Forms.Button();
+            this.btnUpdateDestytojas = new System.Windows.Forms.Button();
+            this.txtSurnameDestytojas = new System.Windows.Forms.TextBox();
+            this.txtNameDestytojas = new System.Windows.Forms.TextBox();
             this.tabStudentas = new System.Windows.Forms.TabPage();
             this.btnClose = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnConfirmUpdateDalykas = new System.Windows.Forms.Button();
+            this.cmbAKDestytojas = new System.Windows.Forms.ComboBox();
+            this.lblErrorLecturer = new System.Windows.Forms.Label();
+            this.cmbFacultyDestytojas = new System.Windows.Forms.ComboBox();
+            this.cmbDegreeDestytojas = new System.Windows.Forms.ComboBox();
+            this.txtAKDestytojas = new System.Windows.Forms.TextBox();
+            this.btnConfirmAddDestytojas = new System.Windows.Forms.Button();
+            this.btnConfirmUpdateDestytojas = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabFakultetas.SuspendLayout();
             this.tabDalykas.SuspendLayout();
@@ -83,7 +89,7 @@ namespace UniversitySQL
             // 
             this.tabFakultetas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(107)))), ((int)(((byte)(192)))));
             this.tabFakultetas.Controls.Add(this.btnConfirmUpdateFakultetas);
-            this.tabFakultetas.Controls.Add(this.lblError);
+            this.tabFakultetas.Controls.Add(this.lblErrorFaculty);
             this.tabFakultetas.Controls.Add(this.btnDeleteFakultetas);
             this.tabFakultetas.Controls.Add(this.btnAddFakultetas);
             this.tabFakultetas.Controls.Add(this.btnUpdateFakultetas);
@@ -102,6 +108,7 @@ namespace UniversitySQL
             this.btnConfirmUpdateFakultetas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.btnConfirmUpdateFakultetas.FlatAppearance.BorderSize = 0;
             this.btnConfirmUpdateFakultetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmUpdateFakultetas.ForeColor = System.Drawing.Color.Black;
             this.btnConfirmUpdateFakultetas.Location = new System.Drawing.Point(244, 48);
             this.btnConfirmUpdateFakultetas.Name = "btnConfirmUpdateFakultetas";
             this.btnConfirmUpdateFakultetas.Size = new System.Drawing.Size(123, 36);
@@ -109,20 +116,21 @@ namespace UniversitySQL
             this.btnConfirmUpdateFakultetas.UseVisualStyleBackColor = true;
             this.btnConfirmUpdateFakultetas.Click += new System.EventHandler(this.btnConfirmUpdateFakultetas_Click);
             // 
-            // lblError
+            // lblErrorFaculty
             // 
-            this.lblError.AutoSize = true;
-            this.lblError.Font = new System.Drawing.Font("Trajan Pro", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblError.Location = new System.Drawing.Point(12, 89);
-            this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(0, 15);
-            this.lblError.TabIndex = 4;
+            this.lblErrorFaculty.AutoSize = true;
+            this.lblErrorFaculty.Font = new System.Drawing.Font("Trajan Pro", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorFaculty.Location = new System.Drawing.Point(12, 89);
+            this.lblErrorFaculty.Name = "lblErrorFaculty";
+            this.lblErrorFaculty.Size = new System.Drawing.Size(0, 15);
+            this.lblErrorFaculty.TabIndex = 4;
             // 
             // btnDeleteFakultetas
             // 
             this.btnDeleteFakultetas.BackColor = System.Drawing.Color.Red;
             this.btnDeleteFakultetas.FlatAppearance.BorderSize = 0;
             this.btnDeleteFakultetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteFakultetas.ForeColor = System.Drawing.Color.Black;
             this.btnDeleteFakultetas.Location = new System.Drawing.Point(244, 89);
             this.btnDeleteFakultetas.Name = "btnDeleteFakultetas";
             this.btnDeleteFakultetas.Size = new System.Drawing.Size(123, 36);
@@ -136,6 +144,7 @@ namespace UniversitySQL
             this.btnAddFakultetas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.btnAddFakultetas.FlatAppearance.BorderSize = 0;
             this.btnAddFakultetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddFakultetas.ForeColor = System.Drawing.Color.Black;
             this.btnAddFakultetas.Location = new System.Drawing.Point(244, 7);
             this.btnAddFakultetas.Name = "btnAddFakultetas";
             this.btnAddFakultetas.Size = new System.Drawing.Size(123, 36);
@@ -149,6 +158,7 @@ namespace UniversitySQL
             this.btnUpdateFakultetas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.btnUpdateFakultetas.FlatAppearance.BorderSize = 0;
             this.btnUpdateFakultetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateFakultetas.ForeColor = System.Drawing.Color.Black;
             this.btnUpdateFakultetas.Location = new System.Drawing.Point(244, 48);
             this.btnUpdateFakultetas.Name = "btnUpdateFakultetas";
             this.btnUpdateFakultetas.Size = new System.Drawing.Size(123, 36);
@@ -160,46 +170,48 @@ namespace UniversitySQL
             // txtPhoneNrFakultetas
             // 
             this.txtPhoneNrFakultetas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPhoneNrFakultetas.Font = new System.Drawing.Font("Trajan Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPhoneNrFakultetas.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhoneNrFakultetas.ForeColor = System.Drawing.Color.Gray;
             this.txtPhoneNrFakultetas.Location = new System.Drawing.Point(12, 63);
             this.txtPhoneNrFakultetas.Name = "txtPhoneNrFakultetas";
-            this.txtPhoneNrFakultetas.Size = new System.Drawing.Size(200, 20);
+            this.txtPhoneNrFakultetas.Size = new System.Drawing.Size(226, 20);
             this.txtPhoneNrFakultetas.TabIndex = 2;
             this.txtPhoneNrFakultetas.Text = "Telefono Nr.";
             // 
             // txtAddressFakultetas
             // 
             this.txtAddressFakultetas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAddressFakultetas.Font = new System.Drawing.Font("Trajan Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddressFakultetas.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddressFakultetas.ForeColor = System.Drawing.Color.Gray;
             this.txtAddressFakultetas.Location = new System.Drawing.Point(12, 35);
             this.txtAddressFakultetas.Name = "txtAddressFakultetas";
-            this.txtAddressFakultetas.Size = new System.Drawing.Size(200, 20);
+            this.txtAddressFakultetas.Size = new System.Drawing.Size(226, 20);
             this.txtAddressFakultetas.TabIndex = 1;
             this.txtAddressFakultetas.Text = "Adresas";
             // 
             // txtTitleFakultetas
             // 
-            this.txtTitleFakultetas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(255)))), ((int)(((byte)(3)))));
+            this.txtTitleFakultetas.BackColor = System.Drawing.Color.PaleGreen;
             this.txtTitleFakultetas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTitleFakultetas.Font = new System.Drawing.Font("Trajan Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitleFakultetas.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitleFakultetas.ForeColor = System.Drawing.Color.Gray;
             this.txtTitleFakultetas.Location = new System.Drawing.Point(12, 7);
             this.txtTitleFakultetas.Name = "txtTitleFakultetas";
-            this.txtTitleFakultetas.Size = new System.Drawing.Size(200, 20);
+            this.txtTitleFakultetas.Size = new System.Drawing.Size(226, 20);
             this.txtTitleFakultetas.TabIndex = 0;
             this.txtTitleFakultetas.Text = "Pavadinimas";
             // 
             // tabDalykas
             // 
             this.tabDalykas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(107)))), ((int)(((byte)(192)))));
-            this.tabDalykas.Controls.Add(this.button1);
+            this.tabDalykas.Controls.Add(this.cmbIDDalykas);
+            this.tabDalykas.Controls.Add(this.lblErrorCourse);
+            this.tabDalykas.Controls.Add(this.btnDeleteDalykas);
             this.tabDalykas.Controls.Add(this.btnAddDalykas);
-            this.tabDalykas.Controls.Add(this.button3);
-            this.tabDalykas.Controls.Add(this.textBox1);
-            this.tabDalykas.Controls.Add(this.textBox2);
-            this.tabDalykas.Controls.Add(this.textBox3);
+            this.tabDalykas.Controls.Add(this.btnConfirmUpdateDalykas);
+            this.tabDalykas.Controls.Add(this.btnUpdateDalykas);
+            this.tabDalykas.Controls.Add(this.txtCreditsDalykas);
+            this.tabDalykas.Controls.Add(this.txtTitleDalykas);
             this.tabDalykas.Location = new System.Drawing.Point(4, 25);
             this.tabDalykas.Name = "tabDalykas";
             this.tabDalykas.Padding = new System.Windows.Forms.Padding(3);
@@ -207,86 +219,106 @@ namespace UniversitySQL
             this.tabDalykas.TabIndex = 1;
             this.tabDalykas.Text = "Dalykas";
             // 
-            // button1
+            // cmbIDDalykas
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(244, 89);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(123, 36);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Ištrinti";
-            this.button1.UseVisualStyleBackColor = true;
+            this.cmbIDDalykas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbIDDalykas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbIDDalykas.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.cmbIDDalykas.FormattingEnabled = true;
+            this.cmbIDDalykas.Location = new System.Drawing.Point(12, 6);
+            this.cmbIDDalykas.Name = "cmbIDDalykas";
+            this.cmbIDDalykas.Size = new System.Drawing.Size(226, 21);
+            this.cmbIDDalykas.TabIndex = 10;
+            // 
+            // lblErrorCourse
+            // 
+            this.lblErrorCourse.AutoSize = true;
+            this.lblErrorCourse.Font = new System.Drawing.Font("Trajan Pro", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorCourse.Location = new System.Drawing.Point(12, 89);
+            this.lblErrorCourse.Name = "lblErrorCourse";
+            this.lblErrorCourse.Size = new System.Drawing.Size(0, 15);
+            this.lblErrorCourse.TabIndex = 9;
+            // 
+            // btnDeleteDalykas
+            // 
+            this.btnDeleteDalykas.BackColor = System.Drawing.Color.Red;
+            this.btnDeleteDalykas.FlatAppearance.BorderSize = 0;
+            this.btnDeleteDalykas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteDalykas.ForeColor = System.Drawing.Color.Black;
+            this.btnDeleteDalykas.Location = new System.Drawing.Point(244, 89);
+            this.btnDeleteDalykas.Name = "btnDeleteDalykas";
+            this.btnDeleteDalykas.Size = new System.Drawing.Size(123, 36);
+            this.btnDeleteDalykas.TabIndex = 6;
+            this.btnDeleteDalykas.Text = "Ištrinti";
+            this.btnDeleteDalykas.UseVisualStyleBackColor = false;
+            this.btnDeleteDalykas.Click += new System.EventHandler(this.btnDeleteDalykas_Click);
             // 
             // btnAddDalykas
             // 
             this.btnAddDalykas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.btnAddDalykas.FlatAppearance.BorderSize = 0;
             this.btnAddDalykas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddDalykas.ForeColor = System.Drawing.Color.Black;
             this.btnAddDalykas.Location = new System.Drawing.Point(244, 7);
             this.btnAddDalykas.Name = "btnAddDalykas";
             this.btnAddDalykas.Size = new System.Drawing.Size(123, 36);
             this.btnAddDalykas.TabIndex = 7;
             this.btnAddDalykas.Text = "Įvesti";
             this.btnAddDalykas.UseVisualStyleBackColor = true;
+            this.btnAddDalykas.Click += new System.EventHandler(this.btnAddDalykas_Click);
             // 
-            // button3
+            // btnUpdateDalykas
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(244, 47);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(123, 36);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Pakeisti";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnUpdateDalykas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnUpdateDalykas.FlatAppearance.BorderSize = 0;
+            this.btnUpdateDalykas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateDalykas.ForeColor = System.Drawing.Color.Black;
+            this.btnUpdateDalykas.Location = new System.Drawing.Point(244, 47);
+            this.btnUpdateDalykas.Name = "btnUpdateDalykas";
+            this.btnUpdateDalykas.Size = new System.Drawing.Size(123, 36);
+            this.btnUpdateDalykas.TabIndex = 8;
+            this.btnUpdateDalykas.Text = "Pakeisti";
+            this.btnUpdateDalykas.UseVisualStyleBackColor = true;
+            this.btnUpdateDalykas.Click += new System.EventHandler(this.btnUpdateDalykas_Click);
             // 
-            // textBox1
+            // txtCreditsDalykas
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Trajan Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.Gray;
-            this.textBox1.Location = new System.Drawing.Point(12, 63);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "Kreditu sk.";
+            this.txtCreditsDalykas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCreditsDalykas.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCreditsDalykas.ForeColor = System.Drawing.Color.Gray;
+            this.txtCreditsDalykas.Location = new System.Drawing.Point(12, 63);
+            this.txtCreditsDalykas.Name = "txtCreditsDalykas";
+            this.txtCreditsDalykas.Size = new System.Drawing.Size(226, 20);
+            this.txtCreditsDalykas.TabIndex = 5;
+            this.txtCreditsDalykas.Text = "Kreditu sk.";
             // 
-            // textBox2
+            // txtTitleDalykas
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Trajan Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.Gray;
-            this.textBox2.Location = new System.Drawing.Point(12, 35);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 20);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.Text = "Pavadinimas";
-            // 
-            // textBox3
-            // 
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Trajan Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.Color.Gray;
-            this.textBox3.Location = new System.Drawing.Point(12, 7);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(200, 20);
-            this.textBox3.TabIndex = 3;
-            this.textBox3.Text = "ID";
+            this.txtTitleDalykas.BackColor = System.Drawing.SystemColors.Control;
+            this.txtTitleDalykas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTitleDalykas.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitleDalykas.ForeColor = System.Drawing.Color.Gray;
+            this.txtTitleDalykas.Location = new System.Drawing.Point(12, 35);
+            this.txtTitleDalykas.Name = "txtTitleDalykas";
+            this.txtTitleDalykas.Size = new System.Drawing.Size(226, 20);
+            this.txtTitleDalykas.TabIndex = 4;
+            this.txtTitleDalykas.Text = "Pavadinimas";
             // 
             // tabDestytojas
             // 
             this.tabDestytojas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(107)))), ((int)(((byte)(192)))));
-            this.tabDestytojas.Controls.Add(this.button4);
-            this.tabDestytojas.Controls.Add(this.button5);
-            this.tabDestytojas.Controls.Add(this.button6);
-            this.tabDestytojas.Controls.Add(this.textBox8);
-            this.tabDestytojas.Controls.Add(this.textBox7);
-            this.tabDestytojas.Controls.Add(this.textBox4);
-            this.tabDestytojas.Controls.Add(this.textBox5);
-            this.tabDestytojas.Controls.Add(this.textBox6);
+            this.tabDestytojas.Controls.Add(this.btnConfirmUpdateDestytojas);
+            this.tabDestytojas.Controls.Add(this.btnConfirmAddDestytojas);
+            this.tabDestytojas.Controls.Add(this.txtAKDestytojas);
+            this.tabDestytojas.Controls.Add(this.cmbDegreeDestytojas);
+            this.tabDestytojas.Controls.Add(this.cmbFacultyDestytojas);
+            this.tabDestytojas.Controls.Add(this.lblErrorLecturer);
+            this.tabDestytojas.Controls.Add(this.cmbAKDestytojas);
+            this.tabDestytojas.Controls.Add(this.btnDeleteDestytojas);
+            this.tabDestytojas.Controls.Add(this.btnAddDestytojas);
+            this.tabDestytojas.Controls.Add(this.btnUpdateDestytojas);
+            this.tabDestytojas.Controls.Add(this.txtSurnameDestytojas);
+            this.tabDestytojas.Controls.Add(this.txtNameDestytojas);
             this.tabDestytojas.Location = new System.Drawing.Point(4, 25);
             this.tabDestytojas.Name = "tabDestytojas";
             this.tabDestytojas.Padding = new System.Windows.Forms.Padding(3);
@@ -294,96 +326,69 @@ namespace UniversitySQL
             this.tabDestytojas.TabIndex = 2;
             this.tabDestytojas.Text = "Dėstytojas";
             // 
-            // button4
+            // btnDeleteDestytojas
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(244, 89);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(123, 36);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "Ištrinti";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnDeleteDestytojas.BackColor = System.Drawing.Color.Red;
+            this.btnDeleteDestytojas.FlatAppearance.BorderSize = 0;
+            this.btnDeleteDestytojas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteDestytojas.ForeColor = System.Drawing.Color.Black;
+            this.btnDeleteDestytojas.Location = new System.Drawing.Point(244, 89);
+            this.btnDeleteDestytojas.Name = "btnDeleteDestytojas";
+            this.btnDeleteDestytojas.Size = new System.Drawing.Size(123, 36);
+            this.btnDeleteDestytojas.TabIndex = 9;
+            this.btnDeleteDestytojas.Text = "Ištrinti";
+            this.btnDeleteDestytojas.UseVisualStyleBackColor = false;
+            this.btnDeleteDestytojas.Click += new System.EventHandler(this.btnDeleteDestytojas_Click);
             // 
-            // button5
+            // btnAddDestytojas
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(244, 7);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(123, 36);
-            this.button5.TabIndex = 10;
-            this.button5.Text = "Įvesti";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnAddDestytojas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnAddDestytojas.FlatAppearance.BorderSize = 0;
+            this.btnAddDestytojas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddDestytojas.ForeColor = System.Drawing.Color.Black;
+            this.btnAddDestytojas.Location = new System.Drawing.Point(244, 7);
+            this.btnAddDestytojas.Name = "btnAddDestytojas";
+            this.btnAddDestytojas.Size = new System.Drawing.Size(123, 36);
+            this.btnAddDestytojas.TabIndex = 10;
+            this.btnAddDestytojas.Text = "Įvesti";
+            this.btnAddDestytojas.UseVisualStyleBackColor = true;
+            this.btnAddDestytojas.Click += new System.EventHandler(this.btnAddDestytojas_Click);
             // 
-            // button6
+            // btnUpdateDestytojas
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(244, 47);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(123, 36);
-            this.button6.TabIndex = 11;
-            this.button6.Text = "Pakeisti";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnUpdateDestytojas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnUpdateDestytojas.FlatAppearance.BorderSize = 0;
+            this.btnUpdateDestytojas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateDestytojas.ForeColor = System.Drawing.Color.Black;
+            this.btnUpdateDestytojas.Location = new System.Drawing.Point(244, 47);
+            this.btnUpdateDestytojas.Name = "btnUpdateDestytojas";
+            this.btnUpdateDestytojas.Size = new System.Drawing.Size(123, 36);
+            this.btnUpdateDestytojas.TabIndex = 11;
+            this.btnUpdateDestytojas.Text = "Pakeisti";
+            this.btnUpdateDestytojas.UseVisualStyleBackColor = true;
+            this.btnUpdateDestytojas.Click += new System.EventHandler(this.btnUpdateDestytojas_Click);
             // 
-            // textBox8
+            // txtSurnameDestytojas
             // 
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox8.Font = new System.Drawing.Font("Trajan Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.ForeColor = System.Drawing.Color.Gray;
-            this.textBox8.Location = new System.Drawing.Point(12, 115);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(200, 20);
-            this.textBox8.TabIndex = 8;
-            this.textBox8.Text = "Laipsnis";
+            this.txtSurnameDestytojas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSurnameDestytojas.Font = new System.Drawing.Font("Verdana", 12F);
+            this.txtSurnameDestytojas.ForeColor = System.Drawing.Color.Gray;
+            this.txtSurnameDestytojas.Location = new System.Drawing.Point(12, 89);
+            this.txtSurnameDestytojas.Name = "txtSurnameDestytojas";
+            this.txtSurnameDestytojas.Size = new System.Drawing.Size(226, 20);
+            this.txtSurnameDestytojas.TabIndex = 8;
+            this.txtSurnameDestytojas.Text = "Pavarde";
             // 
-            // textBox7
+            // txtNameDestytojas
             // 
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.Font = new System.Drawing.Font("Trajan Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.ForeColor = System.Drawing.Color.Gray;
-            this.textBox7.Location = new System.Drawing.Point(12, 89);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(200, 20);
-            this.textBox7.TabIndex = 8;
-            this.textBox7.Text = "Pavarde";
-            // 
-            // textBox4
-            // 
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Font = new System.Drawing.Font("Trajan Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.Gray;
-            this.textBox4.Location = new System.Drawing.Point(12, 63);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(200, 20);
-            this.textBox4.TabIndex = 8;
-            this.textBox4.Text = "Vardas";
-            // 
-            // textBox5
-            // 
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Font = new System.Drawing.Font("Trajan Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.ForeColor = System.Drawing.Color.Gray;
-            this.textBox5.Location = new System.Drawing.Point(12, 35);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(200, 20);
-            this.textBox5.TabIndex = 7;
-            this.textBox5.Text = "Fakultetas";
-            // 
-            // textBox6
-            // 
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Font = new System.Drawing.Font("Trajan Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.ForeColor = System.Drawing.Color.Gray;
-            this.textBox6.Location = new System.Drawing.Point(12, 7);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(200, 20);
-            this.textBox6.TabIndex = 6;
-            this.textBox6.Text = "Asmens Kodas";
+            this.txtNameDestytojas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNameDestytojas.Font = new System.Drawing.Font("Verdana", 12F);
+            this.txtNameDestytojas.ForeColor = System.Drawing.Color.Gray;
+            this.txtNameDestytojas.Location = new System.Drawing.Point(12, 63);
+            this.txtNameDestytojas.Name = "txtNameDestytojas";
+            this.txtNameDestytojas.Size = new System.Drawing.Size(226, 20);
+            this.txtNameDestytojas.TabIndex = 8;
+            this.txtNameDestytojas.Text = "Vardas";
             // 
             // tabStudentas
             // 
@@ -416,6 +421,102 @@ namespace UniversitySQL
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(62, 10);
             this.panel3.TabIndex = 0;
+            // 
+            // btnConfirmUpdateDalykas
+            // 
+            this.btnConfirmUpdateDalykas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnConfirmUpdateDalykas.FlatAppearance.BorderSize = 0;
+            this.btnConfirmUpdateDalykas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmUpdateDalykas.ForeColor = System.Drawing.Color.Black;
+            this.btnConfirmUpdateDalykas.Location = new System.Drawing.Point(244, 47);
+            this.btnConfirmUpdateDalykas.Name = "btnConfirmUpdateDalykas";
+            this.btnConfirmUpdateDalykas.Size = new System.Drawing.Size(123, 36);
+            this.btnConfirmUpdateDalykas.TabIndex = 8;
+            this.btnConfirmUpdateDalykas.UseVisualStyleBackColor = true;
+            this.btnConfirmUpdateDalykas.Click += new System.EventHandler(this.btnConfirmUpdateDalykas_Click);
+            // 
+            // cmbAKDestytojas
+            // 
+            this.cmbAKDestytojas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAKDestytojas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbAKDestytojas.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.cmbAKDestytojas.FormattingEnabled = true;
+            this.cmbAKDestytojas.Location = new System.Drawing.Point(12, 6);
+            this.cmbAKDestytojas.Name = "cmbAKDestytojas";
+            this.cmbAKDestytojas.Size = new System.Drawing.Size(226, 21);
+            this.cmbAKDestytojas.TabIndex = 12;
+            // 
+            // lblErrorLecturer
+            // 
+            this.lblErrorLecturer.AutoSize = true;
+            this.lblErrorLecturer.Font = new System.Drawing.Font("Trajan Pro", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorLecturer.Location = new System.Drawing.Point(15, 141);
+            this.lblErrorLecturer.Name = "lblErrorLecturer";
+            this.lblErrorLecturer.Size = new System.Drawing.Size(0, 15);
+            this.lblErrorLecturer.TabIndex = 13;
+            // 
+            // cmbFacultyDestytojas
+            // 
+            this.cmbFacultyDestytojas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFacultyDestytojas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbFacultyDestytojas.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.cmbFacultyDestytojas.FormattingEnabled = true;
+            this.cmbFacultyDestytojas.Location = new System.Drawing.Point(12, 34);
+            this.cmbFacultyDestytojas.Name = "cmbFacultyDestytojas";
+            this.cmbFacultyDestytojas.Size = new System.Drawing.Size(226, 21);
+            this.cmbFacultyDestytojas.TabIndex = 14;
+            // 
+            // cmbDegreeDestytojas
+            // 
+            this.cmbDegreeDestytojas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDegreeDestytojas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbDegreeDestytojas.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.cmbDegreeDestytojas.FormattingEnabled = true;
+            this.cmbDegreeDestytojas.Items.AddRange(new object[] {
+            "Docentas",
+            "Lektorius",
+            "Asistentas"});
+            this.cmbDegreeDestytojas.Location = new System.Drawing.Point(12, 115);
+            this.cmbDegreeDestytojas.Name = "cmbDegreeDestytojas";
+            this.cmbDegreeDestytojas.Size = new System.Drawing.Size(226, 21);
+            this.cmbDegreeDestytojas.TabIndex = 15;
+            // 
+            // txtAKDestytojas
+            // 
+            this.txtAKDestytojas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAKDestytojas.Font = new System.Drawing.Font("Verdana", 12F);
+            this.txtAKDestytojas.ForeColor = System.Drawing.Color.Gray;
+            this.txtAKDestytojas.Location = new System.Drawing.Point(12, 6);
+            this.txtAKDestytojas.Name = "txtAKDestytojas";
+            this.txtAKDestytojas.Size = new System.Drawing.Size(226, 20);
+            this.txtAKDestytojas.TabIndex = 16;
+            this.txtAKDestytojas.Text = "AK";
+            // 
+            // btnConfirmAddDestytojas
+            // 
+            this.btnConfirmAddDestytojas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnConfirmAddDestytojas.FlatAppearance.BorderSize = 0;
+            this.btnConfirmAddDestytojas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmAddDestytojas.ForeColor = System.Drawing.Color.Black;
+            this.btnConfirmAddDestytojas.Location = new System.Drawing.Point(244, 7);
+            this.btnConfirmAddDestytojas.Name = "btnConfirmAddDestytojas";
+            this.btnConfirmAddDestytojas.Size = new System.Drawing.Size(123, 36);
+            this.btnConfirmAddDestytojas.TabIndex = 17;
+            this.btnConfirmAddDestytojas.UseVisualStyleBackColor = true;
+            this.btnConfirmAddDestytojas.Click += new System.EventHandler(this.btnConfirmAddDestytojas_Click);
+            // 
+            // btnConfirmUpdateDestytojas
+            // 
+            this.btnConfirmUpdateDestytojas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnConfirmUpdateDestytojas.FlatAppearance.BorderSize = 0;
+            this.btnConfirmUpdateDestytojas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmUpdateDestytojas.ForeColor = System.Drawing.Color.Black;
+            this.btnConfirmUpdateDestytojas.Location = new System.Drawing.Point(244, 47);
+            this.btnConfirmUpdateDestytojas.Name = "btnConfirmUpdateDestytojas";
+            this.btnConfirmUpdateDestytojas.Size = new System.Drawing.Size(123, 36);
+            this.btnConfirmUpdateDestytojas.TabIndex = 18;
+            this.btnConfirmUpdateDestytojas.UseVisualStyleBackColor = true;
+            this.btnConfirmUpdateDestytojas.Click += new System.EventHandler(this.btnConfirmUpdateDestytojas_Click);
             // 
             // EditWindow
             // 
@@ -501,21 +602,27 @@ namespace UniversitySQL
         private System.Windows.Forms.Button btnDeleteFakultetas;
         private System.Windows.Forms.Button btnAddFakultetas;
         private System.Windows.Forms.Button btnUpdateFakultetas;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtCreditsDalykas;
+        private System.Windows.Forms.TextBox txtTitleDalykas;
+        private System.Windows.Forms.TextBox txtSurnameDestytojas;
+        private System.Windows.Forms.TextBox txtNameDestytojas;
+        private System.Windows.Forms.Button btnDeleteDalykas;
         private System.Windows.Forms.Button btnAddDalykas;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.Button btnUpdateDalykas;
+        private System.Windows.Forms.Button btnDeleteDestytojas;
+        private System.Windows.Forms.Button btnAddDestytojas;
+        private System.Windows.Forms.Button btnUpdateDestytojas;
+        private System.Windows.Forms.Label lblErrorFaculty;
         private System.Windows.Forms.Button btnConfirmUpdateFakultetas;
+        private System.Windows.Forms.Label lblErrorCourse;
+        private System.Windows.Forms.ComboBox cmbIDDalykas;
+        private System.Windows.Forms.Button btnConfirmUpdateDalykas;
+        private System.Windows.Forms.ComboBox cmbAKDestytojas;
+        private System.Windows.Forms.Label lblErrorLecturer;
+        private System.Windows.Forms.ComboBox cmbFacultyDestytojas;
+        private System.Windows.Forms.ComboBox cmbDegreeDestytojas;
+        private System.Windows.Forms.TextBox txtAKDestytojas;
+        private System.Windows.Forms.Button btnConfirmAddDestytojas;
+        private System.Windows.Forms.Button btnConfirmUpdateDestytojas;
     }
 }

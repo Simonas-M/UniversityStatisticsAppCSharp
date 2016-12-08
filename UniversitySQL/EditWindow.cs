@@ -18,13 +18,26 @@ namespace UniversitySQL
         private const int HT_CAPTION = 0x2;
 
         Fakultetas exsistingFaculty = null;
+        Dalykas exsistingCourse = null;
+        Destytojas exsistingLecturer = null;
 
         string tempTextBoxText;
+
+        Dictionary<Guid, string> CourseIDs = new Dictionary<Guid, string>();
+        Dictionary<string, string> LecturersAKs = new Dictionary<string, string>();
 
         public EditWindow()
         {
             InitializeComponent();
+            UpdateIdsDalykas();
+            UpdateAKsDestytojas();
+            UpdateFaculties();
+            cmbDegreeDestytojas.SelectedIndex = 0;
             btnConfirmUpdateFakultetas.Hide();
+            btnConfirmUpdateDalykas.Hide();
+            btnConfirmAddDestytojas.Hide();
+            btnConfirmUpdateDestytojas.Hide();
+            txtAKDestytojas.Hide();
         }
 
         protected override void WndProc(ref Message m)
@@ -58,21 +71,19 @@ namespace UniversitySQL
                     txtAddressFakultetas.BackColor = Color.Salmon;
                     throw new ArgumentException("Adresas negali būti" + Environment.NewLine + "ilgesnis negu 38 simboliai");
                 }
-
                 else if (string.IsNullOrWhiteSpace(txtAddressFakultetas.Text))
                 {
                     txtAddressFakultetas.BackColor = Color.Salmon;
                     throw new ArgumentNullException(txtAddressFakultetas.Text);
                 }
-
                 else if (!new System.Text.RegularExpressions.Regex(@"^\+370\d{8}$").IsMatch(txtPhoneNrFakultetas.Text))
                 {
                     txtPhoneNrFakultetas.BackColor = Color.Salmon;
-                    throw new ArgumentException("Telefono numeris" + Environment.NewLine + "turi būti +370X XXX XXXX");
+                    throw new ArgumentException("Telefono numeris" + Environment.NewLine + "turi būti +370XXXXXXXX");
                 }
 
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw;
             }
@@ -88,7 +99,7 @@ namespace UniversitySQL
             }
             catch (Exception exc)
             {
-                lblError.Text = exc.Message;
+                lblErrorFaculty.Text = exc.Message;
                 return;
             }
 
@@ -96,7 +107,7 @@ namespace UniversitySQL
             {
                 if (db.Fakultetas.Find(txtTitleFakultetas.Text) != null)
                 {
-                    lblError.Text = "Fakultetas pavadinimu" + Environment.NewLine + "\"" +txtTitleFakultetas.Text + "\" jau egzistuoja";
+                    lblErrorFaculty.Text = "Fakultetas pavadinimu" + Environment.NewLine + "\"" + txtTitleFakultetas.Text + "\" jau egzistuoja";
                     return;
                 }
 
@@ -108,7 +119,7 @@ namespace UniversitySQL
                 db.Fakultetas.Add(faculty);
                 db.SaveChanges();
             }
-            lblError.Text = "Įvesta";
+            lblErrorFaculty.Text = "Įvesta";
         }
 
         private void btnUpdateFakultetas_Click(object sender, EventArgs e)
@@ -121,13 +132,13 @@ namespace UniversitySQL
                     btnConfirmUpdateFakultetas.Show();
                     btnConfirmUpdateFakultetas.Text = "Patvirtinti";
                     btnConfirmUpdateFakultetas.BackColor = Color.Green;
-                    lblError.Text = "Įveskite pakeitimus" + Environment.NewLine + "ir paspauskite patvirtinti";
+                    lblErrorFaculty.Text = "Įveskite pakeitimus" + Environment.NewLine + "ir paspauskite patvirtinti";
                     txtTitleFakultetas.Enabled = false;
                     btnDeleteFakultetas.Enabled = false;
                     btnAddFakultetas.Enabled = false;
                 }
                 else
-                    lblError.Text = "Toks fakultetas nerastas";
+                    lblErrorFaculty.Text = "Toks fakultetas nerastas";
             }
         }
 
@@ -143,7 +154,7 @@ namespace UniversitySQL
             }
             catch (Exception exc)
             {
-                lblError.Text = exc.Message;
+                lblErrorFaculty.Text = exc.Message;
                 return;
             }
 
@@ -177,7 +188,7 @@ namespace UniversitySQL
                 } while (saveFailed);
 
             }
-            lblError.Text = "Pakeista";
+            lblErrorFaculty.Text = "Pakeista";
         }
 
         private void btnDeleteFakultetas_Click(object sender, EventArgs e)
@@ -188,13 +199,12 @@ namespace UniversitySQL
                 if (exsistingFaculty != null)
                 {
                     db.Fakultetas.Remove(exsistingFaculty);
-                    lblError.Text = "Ištrinta";
+                    lblErrorFaculty.Text = "Ištrinta";
                     db.SaveChanges();
                 }
                 else
-                    lblError.Text = "Fakultetas nerastas!";
+                    lblErrorFaculty.Text = "Toks fakultetas nerastas!";
             }
-
         }
 
         private void TextBox_Click(object sender, EventArgs e)
@@ -214,6 +224,396 @@ namespace UniversitySQL
                 box.ForeColor = System.Drawing.Color.Gray;
             }
 
+        }
+
+        private void btnAddDalykas_Click(object sender, EventArgs e)
+        {
+            txtTitleDalykas.BackColor = SystemColors.Control;
+            txtCreditsDalykas.BackColor = SystemColors.Control;
+            try
+            {
+                if (cmbIDDalykas.SelectedIndex != 0)
+                    throw new ArgumentException("Norint pridėti" + Environment.NewLine + "pasirinkite \"Sukurti naują\"");
+                CheckDalykasInfo();
+            }
+            catch (Exception exc)
+            {
+                lblErrorCourse.Text = exc.Message;
+                return;
+            }
+
+            using (var db = new UniversityContext())
+            {
+                Dalykas course = new Dalykas();
+                course.ID = Guid.NewGuid();
+                course.Pavadinimas = txtTitleDalykas.Text;
+                course.Kreditu_Sk = Int16.Parse(txtCreditsDalykas.Text);
+
+                db.Dalykas.Add(course);
+                db.SaveChanges();
+            }
+            lblErrorCourse.Text = "Įvesta";
+            UpdateIdsDalykas();
+        }
+
+        private void CheckDalykasInfo()
+        {
+            try
+            {
+                if (txtTitleDalykas.Text.Length > 30)
+                {
+                    txtTitleDalykas.BackColor = Color.Salmon;
+                    throw new ArgumentException("Pavadinimas negali būti" + Environment.NewLine + "ilgesnis negu 30 simbolių");
+                }
+                else if (string.IsNullOrWhiteSpace(txtTitleDalykas.Text))
+                {
+                    txtTitleDalykas.BackColor = Color.Salmon;
+                    throw new ArgumentNullException(txtTitleDalykas.Text);
+                }
+                else if (Int16.Parse(txtCreditsDalykas.Text) < 1 || Int16.Parse(txtCreditsDalykas.Text) > 10)
+                {
+                    txtCreditsDalykas.BackColor = Color.Salmon;
+                    throw new ArgumentException("Dalyko kreditų skaičius" + Environment.NewLine + "privalo būti intervale (1-10)");
+                }
+            }
+            catch (FormatException)
+            {
+                throw new ArgumentException("Kreditų kiekis turi būti skaičius!");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void UpdateIdsDalykas()
+        {
+            CourseIDs.Clear();
+            cmbIDDalykas.Items.Clear();
+            CourseIDs.Add(default(Guid), "Sukurti naują");
+            cmbIDDalykas.Items.Add("Sukurti naują");
+            cmbIDDalykas.SelectedIndex = 0;
+
+            using (var db = new UniversityContext())
+            {
+                var query = from a in db.Dalykas
+                            select a;
+
+                foreach (var item in query)
+                {
+                    CourseIDs.Add(item.ID, "~hash:" + item.Pavadinimas);
+                    cmbIDDalykas.Items.Add("~hash:" + item.Pavadinimas);
+                }
+            }
+        }
+
+        private void btnUpdateDalykas_Click(object sender, EventArgs e)
+        {
+            using (var db = new UniversityContext())
+            {
+                exsistingCourse = db.Dalykas.Find(CourseIDs.FirstOrDefault(x => x.Value == cmbIDDalykas.SelectedItem.ToString()).Key);
+                if (exsistingCourse != null)
+                {
+                    btnConfirmUpdateDalykas.Show();
+                    btnConfirmUpdateDalykas.Text = "Patvirtinti";
+                    btnConfirmUpdateDalykas.BackColor = Color.Green;
+                    lblErrorCourse.Text = "Įveskite pakeitimus" + Environment.NewLine + "ir paspauskite patvirtinti";
+                    cmbIDDalykas.Enabled = false;
+                    btnDeleteDalykas.Enabled = false;
+                    btnAddDalykas.Enabled = false;
+                }
+            }
+        }
+
+        private void btnConfirmUpdateDalykas_Click(object sender, EventArgs e)
+        {
+            btnConfirmUpdateDalykas.Hide();
+            cmbIDDalykas.Enabled = true;
+            btnDeleteDalykas.Enabled = true;
+            btnAddDalykas.Enabled = true;
+            try
+            {
+                CheckDalykasInfo();
+            }
+            catch (Exception exc)
+            {
+                lblErrorCourse.Text = exc.Message;
+                return;
+            }
+
+            using (var db = new UniversityContext())
+            {
+                exsistingCourse.Pavadinimas = txtTitleDalykas.Text;
+                exsistingCourse.Kreditu_Sk = Int16.Parse(txtCreditsDalykas.Text);
+
+                db.Entry(exsistingCourse).State = System.Data.Entity.EntityState.Modified;
+
+                bool saveFailed;
+                do
+                {
+                    saveFailed = false;
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (System.Data.Entity.Infrastructure.DbUpdateConcurrencyException ex)
+                    {
+                        saveFailed = true;
+
+                        //exsistingCourse.Pavadinimas = txtTitleDalykas.Text;
+                        //exsistingCourse.Kreditu_Sk = Int16.Parse(txtAddressFakultetas.Text);
+
+                        ex.Entries.Single().Reload();
+                    }
+
+                } while (saveFailed);
+
+            }
+            lblErrorCourse.Text = "Pakeista";
+            UpdateIdsDalykas();
+        }
+
+        private void btnDeleteDalykas_Click(object sender, EventArgs e)
+        {
+            if (cmbIDDalykas.SelectedIndex == 0)
+            {
+                lblErrorCourse.Text = "Pirma pasirinkite ID";
+                return;
+            }
+
+            using (var db = new UniversityContext())
+            {
+                exsistingCourse = db.Dalykas.Find(CourseIDs.FirstOrDefault(x => x.Value == cmbIDDalykas.SelectedItem.ToString()).Key);
+                if (exsistingCourse != null)
+                {
+                    db.Dalykas.Remove(exsistingCourse);
+                    lblErrorCourse.Text = "Ištrinta";
+                    db.SaveChanges();
+                }
+            }
+            UpdateIdsDalykas();
+        }
+
+        private void btnAddDestytojas_Click(object sender, EventArgs e)
+        {
+            txtNameDestytojas.BackColor = SystemColors.Control;
+            txtSurnameDestytojas.BackColor = SystemColors.Control;
+
+            try
+            {
+                if (cmbAKDestytojas.SelectedIndex != 0)
+                    throw new ArgumentException("Norint pridėti" + Environment.NewLine + "pasirinkite \"Sukurti naują\"");
+                CheckDestytojasInfo();
+            }
+            catch (Exception exc)
+            {
+                lblErrorLecturer.Text = exc.Message;
+                return;
+            }
+
+            txtAKDestytojas.Show();
+            btnConfirmAddDestytojas.Show();
+            cmbIDDalykas.Hide();
+            btnConfirmAddDestytojas.Text = "Patvirtinti";
+            btnConfirmAddDestytojas.BackColor = Color.Green;
+            lblErrorLecturer.Text = "Įveskite pakeitimus" + Environment.NewLine + "ir paspauskite patvirtinti";
+            btnDeleteDestytojas.Enabled = false;
+            btnUpdateDestytojas.Enabled = false;
+        }
+
+        private void UpdateAKsDestytojas()
+        {
+            LecturersAKs.Clear();
+            cmbAKDestytojas.Items.Clear();
+            LecturersAKs.Add("01010101010", "Sukurti naują");
+            cmbAKDestytojas.Items.Add("Sukurti naują");
+            cmbAKDestytojas.SelectedIndex = 0;
+
+            using (var db = new UniversityContext())
+            {
+                var query = from a in db.Destytojas
+                            select a;
+
+                foreach (var item in query)
+                {
+                    LecturersAKs.Add(item.Asmens_Kodas, item.Asmens_Kodas + ": " + item.Vardas + " " + item.Pavarde);
+                    cmbAKDestytojas.Items.Add(item.Asmens_Kodas + ": " + item.Vardas + " " + item.Pavarde);
+                }
+            }
+        }
+
+        private void UpdateFaculties()
+        {
+            cmbFacultyDestytojas.Items.Clear();
+
+            using (var db = new UniversityContext())
+            {
+                var query = from a in db.Fakultetas
+                            select a.Pavadinimas;
+
+                foreach (var item in query)
+                {
+                    cmbFacultyDestytojas.Items.Add(item);
+                }
+                cmbFacultyDestytojas.SelectedIndex = 0;
+            }
+        }
+
+        private void CheckDestytojasInfo()
+        {
+            try
+            {
+                if (txtNameDestytojas.Text.Length > 15)
+                {
+                    txtNameDestytojas.BackColor = Color.Salmon;
+                    throw new ArgumentException("Pavadinimas negali būti" + Environment.NewLine + "ilgesnis negu 15 simbolių");
+                }
+                else if (string.IsNullOrWhiteSpace(txtNameDestytojas.Text))
+                {
+                    txtNameDestytojas.BackColor = Color.Salmon;
+                    throw new ArgumentNullException(txtNameDestytojas.Text);
+                }
+                else if (txtSurnameDestytojas.Text.Length > 20)
+                {
+                    txtSurnameDestytojas.BackColor = Color.Salmon;
+                    throw new ArgumentException("Pavadinimas negali būti" + Environment.NewLine + "ilgesnis negu 20 simbolių");
+                }
+                else if (string.IsNullOrWhiteSpace(txtSurnameDestytojas.Text))
+                {
+                    txtSurnameDestytojas.BackColor = Color.Salmon;
+                    throw new ArgumentNullException(txtSurnameDestytojas.Text);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void btnConfirmAddDestytojas_Click(object sender, EventArgs e)
+        {
+            txtAKDestytojas.Hide();
+            btnConfirmAddDestytojas.Hide();
+            cmbIDDalykas.Show();
+            btnDeleteDestytojas.Enabled = true;
+            btnUpdateDestytojas.Enabled = true;
+
+            try
+            {
+                if (!new System.Text.RegularExpressions.Regex(@"[3-6][0-9]{2}[0,1][0-9][0-9]{2}[0-9]{4}").IsMatch(txtAKDestytojas.Text))
+                    throw new ArgumentException("Asmens kodas turi būti legalus");
+                CheckDestytojasInfo();
+            }
+            catch (Exception exc)
+            {
+                lblErrorLecturer.Text = exc.Message;
+                return;
+            }
+
+            using (var db = new UniversityContext())
+            {
+                Destytojas lecturer = new Destytojas();
+                lecturer.Asmens_Kodas = txtAKDestytojas.Text;
+                lecturer.Fakultetas = cmbFacultyDestytojas.SelectedItem.ToString();
+                lecturer.Vardas = txtNameDestytojas.Text;
+                lecturer.Pavarde = txtSurnameDestytojas.Text;
+                lecturer.Laipsnis = cmbDegreeDestytojas.SelectedItem.ToString();
+
+                db.Destytojas.Add(lecturer);
+                db.SaveChanges();
+            }
+            lblErrorLecturer.Text = "Įvesta";
+            UpdateAKsDestytojas();
+        }
+
+        private void btnUpdateDestytojas_Click(object sender, EventArgs e)
+        {
+            using (var db = new UniversityContext())
+            {
+                exsistingLecturer = db.Destytojas.Find(LecturersAKs.FirstOrDefault(x => x.Value == cmbAKDestytojas.SelectedItem.ToString()).Key);
+                if (exsistingLecturer != null)
+                {
+                    btnConfirmUpdateDestytojas.Show();
+                    btnConfirmUpdateDestytojas.Text = "Patvirtinti";
+                    btnConfirmUpdateDestytojas.BackColor = Color.Green;
+                    lblErrorLecturer.Text = "Įveskite pakeitimus" + Environment.NewLine + "ir paspauskite patvirtinti";
+                    cmbAKDestytojas.Enabled = false;
+                    btnDeleteDestytojas.Enabled = false;
+                    btnAddDestytojas.Enabled = false;
+                }
+            }
+        }
+
+        private void btnConfirmUpdateDestytojas_Click(object sender, EventArgs e)
+        {
+            btnConfirmUpdateDestytojas.Hide();
+            cmbAKDestytojas.Enabled = true;
+            btnDeleteDestytojas.Enabled = true;
+            btnAddDestytojas.Enabled = true;
+
+            try
+            {
+                CheckDestytojasInfo();
+            }
+            catch (Exception exc)
+            {
+                lblErrorCourse.Text = exc.Message;
+                return;
+            }
+
+            using (var db = new UniversityContext())
+            {
+                exsistingLecturer.Fakultetas = cmbFacultyDestytojas.SelectedItem.ToString();
+                exsistingLecturer.Vardas = txtNameDestytojas.Text;
+                exsistingLecturer.Pavarde = txtSurnameDestytojas.Text;
+                exsistingLecturer.Laipsnis = cmbDegreeDestytojas.SelectedItem.ToString();
+
+                db.Entry(exsistingLecturer).State = System.Data.Entity.EntityState.Modified;
+
+                bool saveFailed;
+                do
+                {
+                    saveFailed = false;
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (System.Data.Entity.Infrastructure.DbUpdateConcurrencyException ex)
+                    {
+                        saveFailed = true;
+
+                        //exsistingCourse.Pavadinimas = txtTitleDalykas.Text;
+                        //exsistingCourse.Kreditu_Sk = Int16.Parse(txtAddressFakultetas.Text);
+
+                        ex.Entries.Single().Reload();
+                    }
+
+                } while (saveFailed);
+
+            }
+            lblErrorLecturer.Text = "Pakeista";
+            UpdateAKsDestytojas();
+        }
+
+        private void btnDeleteDestytojas_Click(object sender, EventArgs e)
+        {
+            if (cmbAKDestytojas.SelectedIndex == 0)
+            {
+                lblErrorLecturer.Text = "Pirma pasirinkite Destytoją";
+                return;
+            }
+
+            using (var db = new UniversityContext())
+            {
+                exsistingLecturer = db.Destytojas.Find(LecturersAKs.FirstOrDefault(x => x.Value == cmbAKDestytojas.SelectedItem.ToString()).Key);
+                if (exsistingLecturer != null)
+                {
+                    db.Destytojas.Remove(exsistingLecturer);
+                    lblErrorLecturer.Text = "Ištrinta";
+                    db.SaveChanges();
+                }
+            }
+            UpdateAKsDestytojas();
         }
     }
 }

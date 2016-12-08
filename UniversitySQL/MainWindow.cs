@@ -62,7 +62,6 @@ namespace UniversitySQL
                 dataGrid.Columns.Clear();
                 dataGrid.Refresh();
 
-
                 dataGrid.Columns.Add("Pavadinimas", "Pavadinimas");
                 dataGrid.Columns.Add("Adresas", "Adresas");
                 dataGrid.Columns.Add("Telefono_Nr", "Telefono_Nr");
@@ -91,13 +90,14 @@ namespace UniversitySQL
 
 
                 dataGrid.Columns.Add("AK", "AK");
+                dataGrid.Columns.Add("Fakultetas", "Fakultetas");
                 dataGrid.Columns.Add("Vardas", "Vardas");
                 dataGrid.Columns.Add("Pavarde", "Pavarde");
                 dataGrid.Columns.Add("Laipsnis", "Laipsnis");
 
                 for (int i = 0; i < listas.Count; i++)
                 {
-                    dataGrid.Rows.Add(listas[i].Asmens_Kodas, listas[i].Vardas, listas[i].Pavarde, listas[i].Laipsnis);
+                    dataGrid.Rows.Add(listas[i].Asmens_Kodas, listas[i].Fakultetas, listas[i].Vardas, listas[i].Pavarde, listas[i].Laipsnis);
                 }
             }
         }
