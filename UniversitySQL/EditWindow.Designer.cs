@@ -32,13 +32,14 @@ namespace UniversitySQL
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabFakultetas = new System.Windows.Forms.TabPage();
+            this.btnConfirmUpdateFakultetas = new System.Windows.Forms.Button();
             this.lblError = new System.Windows.Forms.Label();
             this.btnDeleteFakultetas = new System.Windows.Forms.Button();
             this.btnAddFakultetas = new System.Windows.Forms.Button();
             this.btnUpdateFakultetas = new System.Windows.Forms.Button();
-            this.txtPhoneNr = new System.Windows.Forms.TextBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.txtTitle = new System.Windows.Forms.TextBox();
+            this.txtPhoneNrFakultetas = new System.Windows.Forms.TextBox();
+            this.txtAddressFakultetas = new System.Windows.Forms.TextBox();
+            this.txtTitleFakultetas = new System.Windows.Forms.TextBox();
             this.tabDalykas = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.btnAddDalykas = new System.Windows.Forms.Button();
@@ -81,13 +82,14 @@ namespace UniversitySQL
             // tabFakultetas
             // 
             this.tabFakultetas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(107)))), ((int)(((byte)(192)))));
+            this.tabFakultetas.Controls.Add(this.btnConfirmUpdateFakultetas);
             this.tabFakultetas.Controls.Add(this.lblError);
             this.tabFakultetas.Controls.Add(this.btnDeleteFakultetas);
             this.tabFakultetas.Controls.Add(this.btnAddFakultetas);
             this.tabFakultetas.Controls.Add(this.btnUpdateFakultetas);
-            this.tabFakultetas.Controls.Add(this.txtPhoneNr);
-            this.tabFakultetas.Controls.Add(this.txtAddress);
-            this.tabFakultetas.Controls.Add(this.txtTitle);
+            this.tabFakultetas.Controls.Add(this.txtPhoneNrFakultetas);
+            this.tabFakultetas.Controls.Add(this.txtAddressFakultetas);
+            this.tabFakultetas.Controls.Add(this.txtTitleFakultetas);
             this.tabFakultetas.Location = new System.Drawing.Point(4, 25);
             this.tabFakultetas.Name = "tabFakultetas";
             this.tabFakultetas.Padding = new System.Windows.Forms.Padding(3);
@@ -95,18 +97,30 @@ namespace UniversitySQL
             this.tabFakultetas.TabIndex = 0;
             this.tabFakultetas.Text = "Fakultetas";
             // 
+            // btnConfirmUpdateFakultetas
+            // 
+            this.btnConfirmUpdateFakultetas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnConfirmUpdateFakultetas.FlatAppearance.BorderSize = 0;
+            this.btnConfirmUpdateFakultetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmUpdateFakultetas.Location = new System.Drawing.Point(244, 48);
+            this.btnConfirmUpdateFakultetas.Name = "btnConfirmUpdateFakultetas";
+            this.btnConfirmUpdateFakultetas.Size = new System.Drawing.Size(123, 36);
+            this.btnConfirmUpdateFakultetas.TabIndex = 5;
+            this.btnConfirmUpdateFakultetas.UseVisualStyleBackColor = true;
+            this.btnConfirmUpdateFakultetas.Click += new System.EventHandler(this.btnConfirmUpdateFakultetas_Click);
+            // 
             // lblError
             // 
             this.lblError.AutoSize = true;
-            this.lblError.Font = new System.Drawing.Font("Trajan Pro", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError.Font = new System.Drawing.Font("Trajan Pro", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblError.Location = new System.Drawing.Point(12, 89);
             this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(0, 14);
+            this.lblError.Size = new System.Drawing.Size(0, 15);
             this.lblError.TabIndex = 4;
             // 
             // btnDeleteFakultetas
             // 
-            this.btnDeleteFakultetas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnDeleteFakultetas.BackColor = System.Drawing.Color.Red;
             this.btnDeleteFakultetas.FlatAppearance.BorderSize = 0;
             this.btnDeleteFakultetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteFakultetas.Location = new System.Drawing.Point(244, 89);
@@ -115,6 +129,7 @@ namespace UniversitySQL
             this.btnDeleteFakultetas.TabIndex = 3;
             this.btnDeleteFakultetas.Text = "Ištrinti";
             this.btnDeleteFakultetas.UseVisualStyleBackColor = true;
+            this.btnDeleteFakultetas.Click += new System.EventHandler(this.btnDeleteFakultetas_Click);
             // 
             // btnAddFakultetas
             // 
@@ -134,7 +149,7 @@ namespace UniversitySQL
             this.btnUpdateFakultetas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.btnUpdateFakultetas.FlatAppearance.BorderSize = 0;
             this.btnUpdateFakultetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdateFakultetas.Location = new System.Drawing.Point(244, 47);
+            this.btnUpdateFakultetas.Location = new System.Drawing.Point(244, 48);
             this.btnUpdateFakultetas.Name = "btnUpdateFakultetas";
             this.btnUpdateFakultetas.Size = new System.Drawing.Size(123, 36);
             this.btnUpdateFakultetas.TabIndex = 3;
@@ -142,38 +157,39 @@ namespace UniversitySQL
             this.btnUpdateFakultetas.UseVisualStyleBackColor = true;
             this.btnUpdateFakultetas.Click += new System.EventHandler(this.btnUpdateFakultetas_Click);
             // 
-            // txtPhoneNr
+            // txtPhoneNrFakultetas
             // 
-            this.txtPhoneNr.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPhoneNr.Font = new System.Drawing.Font("Trajan Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhoneNr.ForeColor = System.Drawing.Color.Gray;
-            this.txtPhoneNr.Location = new System.Drawing.Point(12, 63);
-            this.txtPhoneNr.Name = "txtPhoneNr";
-            this.txtPhoneNr.Size = new System.Drawing.Size(200, 20);
-            this.txtPhoneNr.TabIndex = 2;
-            this.txtPhoneNr.Text = "Telefono Nr.";
+            this.txtPhoneNrFakultetas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPhoneNrFakultetas.Font = new System.Drawing.Font("Trajan Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPhoneNrFakultetas.ForeColor = System.Drawing.Color.Gray;
+            this.txtPhoneNrFakultetas.Location = new System.Drawing.Point(12, 63);
+            this.txtPhoneNrFakultetas.Name = "txtPhoneNrFakultetas";
+            this.txtPhoneNrFakultetas.Size = new System.Drawing.Size(200, 20);
+            this.txtPhoneNrFakultetas.TabIndex = 2;
+            this.txtPhoneNrFakultetas.Text = "Telefono Nr.";
             // 
-            // txtAddress
+            // txtAddressFakultetas
             // 
-            this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAddress.Font = new System.Drawing.Font("Trajan Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.ForeColor = System.Drawing.Color.Gray;
-            this.txtAddress.Location = new System.Drawing.Point(12, 35);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(200, 20);
-            this.txtAddress.TabIndex = 1;
-            this.txtAddress.Text = "Adresas";
+            this.txtAddressFakultetas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAddressFakultetas.Font = new System.Drawing.Font("Trajan Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddressFakultetas.ForeColor = System.Drawing.Color.Gray;
+            this.txtAddressFakultetas.Location = new System.Drawing.Point(12, 35);
+            this.txtAddressFakultetas.Name = "txtAddressFakultetas";
+            this.txtAddressFakultetas.Size = new System.Drawing.Size(200, 20);
+            this.txtAddressFakultetas.TabIndex = 1;
+            this.txtAddressFakultetas.Text = "Adresas";
             // 
-            // txtTitle
+            // txtTitleFakultetas
             // 
-            this.txtTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTitle.Font = new System.Drawing.Font("Trajan Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.ForeColor = System.Drawing.Color.Gray;
-            this.txtTitle.Location = new System.Drawing.Point(12, 7);
-            this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(200, 20);
-            this.txtTitle.TabIndex = 0;
-            this.txtTitle.Text = "Pavadinimas";
+            this.txtTitleFakultetas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(255)))), ((int)(((byte)(3)))));
+            this.txtTitleFakultetas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTitleFakultetas.Font = new System.Drawing.Font("Trajan Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitleFakultetas.ForeColor = System.Drawing.Color.Gray;
+            this.txtTitleFakultetas.Location = new System.Drawing.Point(12, 7);
+            this.txtTitleFakultetas.Name = "txtTitleFakultetas";
+            this.txtTitleFakultetas.Size = new System.Drawing.Size(200, 20);
+            this.txtTitleFakultetas.TabIndex = 0;
+            this.txtTitleFakultetas.Text = "Pavadinimas";
             // 
             // tabDalykas
             // 
@@ -426,46 +442,46 @@ namespace UniversitySQL
 
         private void txtAddress_LostFocus(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtAddress.Text))
+            if (String.IsNullOrEmpty(txtAddressFakultetas.Text))
             {
-                txtAddress.Text = "Iveskite Adresa";
-                txtAddress.ForeColor = System.Drawing.Color.Gray;
+                txtAddressFakultetas.Text = "Iveskite Adresa";
+                txtAddressFakultetas.ForeColor = System.Drawing.Color.Gray;
             }
         }
 
         private void txtAddress_Click(object sender, EventArgs e)
         {
-            txtAddress.Text = "";
-            txtAddress.ForeColor = System.Drawing.Color.Black;
+            txtAddressFakultetas.Text = "";
+            txtAddressFakultetas.ForeColor = System.Drawing.Color.Black;
         }
 
         private void txtPhoneNr_LostFocus(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtPhoneNr.Text))
+            if (String.IsNullOrEmpty(txtPhoneNrFakultetas.Text))
             {
-                txtPhoneNr.Text = "Iveskite Telefono Nr";
-                txtPhoneNr.ForeColor = System.Drawing.Color.Gray;
+                txtPhoneNrFakultetas.Text = "Iveskite Telefono Nr";
+                txtPhoneNrFakultetas.ForeColor = System.Drawing.Color.Gray;
             }
         }
 
         private void txtPhoneNr_Click(object sender, EventArgs e)
         {
-            txtPhoneNr.Text = "";
-            txtPhoneNr.ForeColor = System.Drawing.Color.Black;
+            txtPhoneNrFakultetas.Text = "";
+            txtPhoneNrFakultetas.ForeColor = System.Drawing.Color.Black;
         }
 
         private void TxtTitle_Click(object sender, EventArgs e)
         {
-            txtTitle.Text = "";
-            txtTitle.ForeColor = System.Drawing.Color.Black;
+            txtTitleFakultetas.Text = "";
+            txtTitleFakultetas.ForeColor = System.Drawing.Color.Black;
         }
 
         private void txtTitle_LostFocus(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtTitle.Text))
+            if (String.IsNullOrEmpty(txtTitleFakultetas.Text))
             {
-                txtTitle.Text = "Iveskite pavadinima";
-                txtTitle.ForeColor = System.Drawing.Color.Gray;
+                txtTitleFakultetas.Text = "Iveskite pavadinima";
+                txtTitleFakultetas.ForeColor = System.Drawing.Color.Gray;
             }
 
         }
@@ -479,9 +495,9 @@ namespace UniversitySQL
         private System.Windows.Forms.TabPage tabStudentas;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox txtPhoneNr;
-        private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.TextBox txtTitle;
+        private System.Windows.Forms.TextBox txtPhoneNrFakultetas;
+        private System.Windows.Forms.TextBox txtAddressFakultetas;
+        private System.Windows.Forms.TextBox txtTitleFakultetas;
         private System.Windows.Forms.Button btnDeleteFakultetas;
         private System.Windows.Forms.Button btnAddFakultetas;
         private System.Windows.Forms.Button btnUpdateFakultetas;
@@ -500,5 +516,6 @@ namespace UniversitySQL
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.Button btnConfirmUpdateFakultetas;
     }
 }
