@@ -13,3 +13,4 @@ C:\Users\Simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversityS
 C:\Users\Simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\bin\Debug\EntityFramework.xml
 C:\Users\Simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\obj\Debug\UniversitySQL.EditWindow.resources

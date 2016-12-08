@@ -366,5 +366,11 @@ namespace UniversitySQL
             //    }
             //}
         }
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            EditWindow edit = new EditWindow();
+            edit.ShowDialog();
+        }
     }
 }

@@ -122,9 +122,10 @@ namespace UniversitySQL
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(134, 27);
             this.btnAddNew.TabIndex = 0;
-            this.btnAddNew.Text = "Pridėti Naują";
+            this.btnAddNew.Text = "Redaguoti";
             this.btnAddNew.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAddNew.UseVisualStyleBackColor = true;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // pictureBox1
             // 
