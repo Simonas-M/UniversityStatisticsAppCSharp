@@ -76,6 +76,7 @@
     <Compile Include="Dalykas.cs">
       <DependentUpon>UniversityContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="DateOutOfRangeException.cs" />
     <Compile Include="Destytojas.cs">
       <DependentUpon>UniversityContext.tt</DependentUpon>
     </Compile>

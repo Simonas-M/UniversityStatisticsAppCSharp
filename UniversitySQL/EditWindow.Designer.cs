@@ -45,30 +45,44 @@ namespace UniversitySQL
             this.lblErrorCourse = new System.Windows.Forms.Label();
             this.btnDeleteDalykas = new System.Windows.Forms.Button();
             this.btnAddDalykas = new System.Windows.Forms.Button();
+            this.btnConfirmUpdateDalykas = new System.Windows.Forms.Button();
             this.btnUpdateDalykas = new System.Windows.Forms.Button();
             this.txtCreditsDalykas = new System.Windows.Forms.TextBox();
             this.txtTitleDalykas = new System.Windows.Forms.TextBox();
             this.tabDestytojas = new System.Windows.Forms.TabPage();
+            this.cmbDegreeDestytojas = new System.Windows.Forms.ComboBox();
+            this.btnConfirmUpdateDestytojas = new System.Windows.Forms.Button();
+            this.btnConfirmAddDestytojas = new System.Windows.Forms.Button();
+            this.txtAKDestytojas = new System.Windows.Forms.TextBox();
+            this.cmbFacultyDestytojas = new System.Windows.Forms.ComboBox();
+            this.lblErrorLecturer = new System.Windows.Forms.Label();
+            this.cmbAKDestytojas = new System.Windows.Forms.ComboBox();
             this.btnDeleteDestytojas = new System.Windows.Forms.Button();
             this.btnAddDestytojas = new System.Windows.Forms.Button();
             this.btnUpdateDestytojas = new System.Windows.Forms.Button();
             this.txtSurnameDestytojas = new System.Windows.Forms.TextBox();
             this.txtNameDestytojas = new System.Windows.Forms.TextBox();
             this.tabStudentas = new System.Windows.Forms.TabPage();
+            this.txtLSPStudentas = new System.Windows.Forms.TextBox();
+            this.btnConfirmUpdateStudentas = new System.Windows.Forms.Button();
+            this.btnConfirmAddStudentas = new System.Windows.Forms.Button();
+            this.lblErrorStudent = new System.Windows.Forms.Label();
+            this.btnDeleteStudentas = new System.Windows.Forms.Button();
+            this.btnUpdateStudentas = new System.Windows.Forms.Button();
+            this.btnAddStudentas = new System.Windows.Forms.Button();
+            this.cmbDegreeStudentas = new System.Windows.Forms.ComboBox();
+            this.cmbLSPStudentas = new System.Windows.Forms.ComboBox();
+            this.dtpBirthStudentas = new System.Windows.Forms.DateTimePicker();
+            this.txtSurnameStudentas = new System.Windows.Forms.TextBox();
+            this.txtNameStudentas = new System.Windows.Forms.TextBox();
+            this.cmbFacultyStudentas = new System.Windows.Forms.ComboBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnConfirmUpdateDalykas = new System.Windows.Forms.Button();
-            this.cmbAKDestytojas = new System.Windows.Forms.ComboBox();
-            this.lblErrorLecturer = new System.Windows.Forms.Label();
-            this.cmbFacultyDestytojas = new System.Windows.Forms.ComboBox();
-            this.cmbDegreeDestytojas = new System.Windows.Forms.ComboBox();
-            this.txtAKDestytojas = new System.Windows.Forms.TextBox();
-            this.btnConfirmAddDestytojas = new System.Windows.Forms.Button();
-            this.btnConfirmUpdateDestytojas = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabFakultetas.SuspendLayout();
             this.tabDalykas.SuspendLayout();
             this.tabDestytojas.SuspendLayout();
+            this.tabStudentas.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -267,6 +281,19 @@ namespace UniversitySQL
             this.btnAddDalykas.UseVisualStyleBackColor = true;
             this.btnAddDalykas.Click += new System.EventHandler(this.btnAddDalykas_Click);
             // 
+            // btnConfirmUpdateDalykas
+            // 
+            this.btnConfirmUpdateDalykas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnConfirmUpdateDalykas.FlatAppearance.BorderSize = 0;
+            this.btnConfirmUpdateDalykas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmUpdateDalykas.ForeColor = System.Drawing.Color.Black;
+            this.btnConfirmUpdateDalykas.Location = new System.Drawing.Point(244, 47);
+            this.btnConfirmUpdateDalykas.Name = "btnConfirmUpdateDalykas";
+            this.btnConfirmUpdateDalykas.Size = new System.Drawing.Size(123, 36);
+            this.btnConfirmUpdateDalykas.TabIndex = 8;
+            this.btnConfirmUpdateDalykas.UseVisualStyleBackColor = true;
+            this.btnConfirmUpdateDalykas.Click += new System.EventHandler(this.btnConfirmUpdateDalykas_Click);
+            // 
             // btnUpdateDalykas
             // 
             this.btnUpdateDalykas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
@@ -307,10 +334,10 @@ namespace UniversitySQL
             // tabDestytojas
             // 
             this.tabDestytojas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(107)))), ((int)(((byte)(192)))));
+            this.tabDestytojas.Controls.Add(this.cmbDegreeDestytojas);
             this.tabDestytojas.Controls.Add(this.btnConfirmUpdateDestytojas);
             this.tabDestytojas.Controls.Add(this.btnConfirmAddDestytojas);
             this.tabDestytojas.Controls.Add(this.txtAKDestytojas);
-            this.tabDestytojas.Controls.Add(this.cmbDegreeDestytojas);
             this.tabDestytojas.Controls.Add(this.cmbFacultyDestytojas);
             this.tabDestytojas.Controls.Add(this.lblErrorLecturer);
             this.tabDestytojas.Controls.Add(this.cmbAKDestytojas);
@@ -325,6 +352,89 @@ namespace UniversitySQL
             this.tabDestytojas.Size = new System.Drawing.Size(394, 276);
             this.tabDestytojas.TabIndex = 2;
             this.tabDestytojas.Text = "Dėstytojas";
+            // 
+            // cmbDegreeDestytojas
+            // 
+            this.cmbDegreeDestytojas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDegreeDestytojas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbDegreeDestytojas.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.cmbDegreeDestytojas.FormattingEnabled = true;
+            this.cmbDegreeDestytojas.Items.AddRange(new object[] {
+            "Docentas",
+            "Lektorius",
+            "Asistentas"});
+            this.cmbDegreeDestytojas.Location = new System.Drawing.Point(12, 115);
+            this.cmbDegreeDestytojas.Name = "cmbDegreeDestytojas";
+            this.cmbDegreeDestytojas.Size = new System.Drawing.Size(226, 21);
+            this.cmbDegreeDestytojas.TabIndex = 23;
+            // 
+            // btnConfirmUpdateDestytojas
+            // 
+            this.btnConfirmUpdateDestytojas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnConfirmUpdateDestytojas.FlatAppearance.BorderSize = 0;
+            this.btnConfirmUpdateDestytojas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmUpdateDestytojas.ForeColor = System.Drawing.Color.Black;
+            this.btnConfirmUpdateDestytojas.Location = new System.Drawing.Point(244, 47);
+            this.btnConfirmUpdateDestytojas.Name = "btnConfirmUpdateDestytojas";
+            this.btnConfirmUpdateDestytojas.Size = new System.Drawing.Size(123, 36);
+            this.btnConfirmUpdateDestytojas.TabIndex = 18;
+            this.btnConfirmUpdateDestytojas.UseVisualStyleBackColor = true;
+            this.btnConfirmUpdateDestytojas.Click += new System.EventHandler(this.btnConfirmUpdateDestytojas_Click);
+            // 
+            // btnConfirmAddDestytojas
+            // 
+            this.btnConfirmAddDestytojas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnConfirmAddDestytojas.FlatAppearance.BorderSize = 0;
+            this.btnConfirmAddDestytojas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmAddDestytojas.ForeColor = System.Drawing.Color.Black;
+            this.btnConfirmAddDestytojas.Location = new System.Drawing.Point(244, 7);
+            this.btnConfirmAddDestytojas.Name = "btnConfirmAddDestytojas";
+            this.btnConfirmAddDestytojas.Size = new System.Drawing.Size(123, 36);
+            this.btnConfirmAddDestytojas.TabIndex = 17;
+            this.btnConfirmAddDestytojas.UseVisualStyleBackColor = true;
+            this.btnConfirmAddDestytojas.Click += new System.EventHandler(this.btnConfirmAddDestytojas_Click);
+            // 
+            // txtAKDestytojas
+            // 
+            this.txtAKDestytojas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAKDestytojas.Font = new System.Drawing.Font("Verdana", 12F);
+            this.txtAKDestytojas.ForeColor = System.Drawing.Color.Gray;
+            this.txtAKDestytojas.Location = new System.Drawing.Point(12, 6);
+            this.txtAKDestytojas.Name = "txtAKDestytojas";
+            this.txtAKDestytojas.Size = new System.Drawing.Size(226, 20);
+            this.txtAKDestytojas.TabIndex = 16;
+            this.txtAKDestytojas.Text = "AK";
+            // 
+            // cmbFacultyDestytojas
+            // 
+            this.cmbFacultyDestytojas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFacultyDestytojas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbFacultyDestytojas.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.cmbFacultyDestytojas.FormattingEnabled = true;
+            this.cmbFacultyDestytojas.Location = new System.Drawing.Point(12, 34);
+            this.cmbFacultyDestytojas.Name = "cmbFacultyDestytojas";
+            this.cmbFacultyDestytojas.Size = new System.Drawing.Size(226, 21);
+            this.cmbFacultyDestytojas.TabIndex = 14;
+            // 
+            // lblErrorLecturer
+            // 
+            this.lblErrorLecturer.AutoSize = true;
+            this.lblErrorLecturer.Font = new System.Drawing.Font("Trajan Pro", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorLecturer.Location = new System.Drawing.Point(12, 141);
+            this.lblErrorLecturer.Name = "lblErrorLecturer";
+            this.lblErrorLecturer.Size = new System.Drawing.Size(0, 15);
+            this.lblErrorLecturer.TabIndex = 13;
+            // 
+            // cmbAKDestytojas
+            // 
+            this.cmbAKDestytojas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAKDestytojas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbAKDestytojas.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.cmbAKDestytojas.FormattingEnabled = true;
+            this.cmbAKDestytojas.Location = new System.Drawing.Point(12, 6);
+            this.cmbAKDestytojas.Name = "cmbAKDestytojas";
+            this.cmbAKDestytojas.Size = new System.Drawing.Size(226, 21);
+            this.cmbAKDestytojas.TabIndex = 12;
             // 
             // btnDeleteDestytojas
             // 
@@ -393,12 +503,186 @@ namespace UniversitySQL
             // tabStudentas
             // 
             this.tabStudentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(107)))), ((int)(((byte)(192)))));
+            this.tabStudentas.Controls.Add(this.txtLSPStudentas);
+            this.tabStudentas.Controls.Add(this.btnConfirmUpdateStudentas);
+            this.tabStudentas.Controls.Add(this.btnConfirmAddStudentas);
+            this.tabStudentas.Controls.Add(this.lblErrorStudent);
+            this.tabStudentas.Controls.Add(this.btnDeleteStudentas);
+            this.tabStudentas.Controls.Add(this.btnUpdateStudentas);
+            this.tabStudentas.Controls.Add(this.btnAddStudentas);
+            this.tabStudentas.Controls.Add(this.cmbDegreeStudentas);
+            this.tabStudentas.Controls.Add(this.cmbLSPStudentas);
+            this.tabStudentas.Controls.Add(this.dtpBirthStudentas);
+            this.tabStudentas.Controls.Add(this.txtSurnameStudentas);
+            this.tabStudentas.Controls.Add(this.txtNameStudentas);
+            this.tabStudentas.Controls.Add(this.cmbFacultyStudentas);
             this.tabStudentas.Location = new System.Drawing.Point(4, 25);
             this.tabStudentas.Name = "tabStudentas";
             this.tabStudentas.Padding = new System.Windows.Forms.Padding(3);
             this.tabStudentas.Size = new System.Drawing.Size(394, 276);
             this.tabStudentas.TabIndex = 3;
             this.tabStudentas.Text = "Studentas";
+            // 
+            // txtLSPStudentas
+            // 
+            this.txtLSPStudentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtLSPStudentas.Font = new System.Drawing.Font("Verdana", 12F);
+            this.txtLSPStudentas.ForeColor = System.Drawing.Color.Gray;
+            this.txtLSPStudentas.Location = new System.Drawing.Point(13, 7);
+            this.txtLSPStudentas.Name = "txtLSPStudentas";
+            this.txtLSPStudentas.Size = new System.Drawing.Size(226, 20);
+            this.txtLSPStudentas.TabIndex = 34;
+            this.txtLSPStudentas.Text = "LSP_Nr";
+            // 
+            // btnConfirmUpdateStudentas
+            // 
+            this.btnConfirmUpdateStudentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnConfirmUpdateStudentas.FlatAppearance.BorderSize = 0;
+            this.btnConfirmUpdateStudentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmUpdateStudentas.ForeColor = System.Drawing.Color.Black;
+            this.btnConfirmUpdateStudentas.Location = new System.Drawing.Point(244, 47);
+            this.btnConfirmUpdateStudentas.Name = "btnConfirmUpdateStudentas";
+            this.btnConfirmUpdateStudentas.Size = new System.Drawing.Size(123, 36);
+            this.btnConfirmUpdateStudentas.TabIndex = 33;
+            this.btnConfirmUpdateStudentas.UseVisualStyleBackColor = true;
+            this.btnConfirmUpdateStudentas.Click += new System.EventHandler(this.btnConfirmUpdateStudentas_Click);
+            // 
+            // btnConfirmAddStudentas
+            // 
+            this.btnConfirmAddStudentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnConfirmAddStudentas.FlatAppearance.BorderSize = 0;
+            this.btnConfirmAddStudentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmAddStudentas.ForeColor = System.Drawing.Color.Black;
+            this.btnConfirmAddStudentas.Location = new System.Drawing.Point(244, 7);
+            this.btnConfirmAddStudentas.Name = "btnConfirmAddStudentas";
+            this.btnConfirmAddStudentas.Size = new System.Drawing.Size(123, 36);
+            this.btnConfirmAddStudentas.TabIndex = 32;
+            this.btnConfirmAddStudentas.UseVisualStyleBackColor = true;
+            this.btnConfirmAddStudentas.Click += new System.EventHandler(this.btnConfirmAddStudentas_Click);
+            // 
+            // lblErrorStudent
+            // 
+            this.lblErrorStudent.AutoSize = true;
+            this.lblErrorStudent.Font = new System.Drawing.Font("Trajan Pro", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorStudent.Location = new System.Drawing.Point(12, 172);
+            this.lblErrorStudent.Name = "lblErrorStudent";
+            this.lblErrorStudent.Size = new System.Drawing.Size(0, 15);
+            this.lblErrorStudent.TabIndex = 31;
+            // 
+            // btnDeleteStudentas
+            // 
+            this.btnDeleteStudentas.BackColor = System.Drawing.Color.Red;
+            this.btnDeleteStudentas.FlatAppearance.BorderSize = 0;
+            this.btnDeleteStudentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteStudentas.ForeColor = System.Drawing.Color.Black;
+            this.btnDeleteStudentas.Location = new System.Drawing.Point(244, 89);
+            this.btnDeleteStudentas.Name = "btnDeleteStudentas";
+            this.btnDeleteStudentas.Size = new System.Drawing.Size(123, 36);
+            this.btnDeleteStudentas.TabIndex = 30;
+            this.btnDeleteStudentas.Text = "Ištrinti";
+            this.btnDeleteStudentas.UseVisualStyleBackColor = false;
+            this.btnDeleteStudentas.Click += new System.EventHandler(this.btnDeleteStudentas_Click);
+            // 
+            // btnUpdateStudentas
+            // 
+            this.btnUpdateStudentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnUpdateStudentas.FlatAppearance.BorderSize = 0;
+            this.btnUpdateStudentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateStudentas.ForeColor = System.Drawing.Color.Black;
+            this.btnUpdateStudentas.Location = new System.Drawing.Point(244, 47);
+            this.btnUpdateStudentas.Name = "btnUpdateStudentas";
+            this.btnUpdateStudentas.Size = new System.Drawing.Size(123, 36);
+            this.btnUpdateStudentas.TabIndex = 29;
+            this.btnUpdateStudentas.Text = "Pakeisti";
+            this.btnUpdateStudentas.UseVisualStyleBackColor = true;
+            this.btnUpdateStudentas.Click += new System.EventHandler(this.btnUpdateStudentas_Click);
+            // 
+            // btnAddStudentas
+            // 
+            this.btnAddStudentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnAddStudentas.FlatAppearance.BorderSize = 0;
+            this.btnAddStudentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddStudentas.ForeColor = System.Drawing.Color.Black;
+            this.btnAddStudentas.Location = new System.Drawing.Point(244, 7);
+            this.btnAddStudentas.Name = "btnAddStudentas";
+            this.btnAddStudentas.Size = new System.Drawing.Size(123, 36);
+            this.btnAddStudentas.TabIndex = 28;
+            this.btnAddStudentas.Text = "Įvesti";
+            this.btnAddStudentas.UseVisualStyleBackColor = true;
+            this.btnAddStudentas.Click += new System.EventHandler(this.btnAddStudentas_Click);
+            // 
+            // cmbDegreeStudentas
+            // 
+            this.cmbDegreeStudentas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDegreeStudentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbDegreeStudentas.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.cmbDegreeStudentas.FormattingEnabled = true;
+            this.cmbDegreeStudentas.Items.AddRange(new object[] {
+            "Bakalauras 1 kursas",
+            "Bakalauras 2 kursas",
+            "Bakalauras 3 kursas",
+            "Bakalauras 4 kursas",
+            "Magistras 1 kursas",
+            "Magistras 2 kursas"});
+            this.cmbDegreeStudentas.Location = new System.Drawing.Point(12, 144);
+            this.cmbDegreeStudentas.Name = "cmbDegreeStudentas";
+            this.cmbDegreeStudentas.Size = new System.Drawing.Size(226, 21);
+            this.cmbDegreeStudentas.TabIndex = 27;
+            // 
+            // cmbLSPStudentas
+            // 
+            this.cmbLSPStudentas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLSPStudentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbLSPStudentas.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.cmbLSPStudentas.FormattingEnabled = true;
+            this.cmbLSPStudentas.Location = new System.Drawing.Point(13, 6);
+            this.cmbLSPStudentas.Name = "cmbLSPStudentas";
+            this.cmbLSPStudentas.Size = new System.Drawing.Size(226, 21);
+            this.cmbLSPStudentas.TabIndex = 26;
+            // 
+            // dtpBirthStudentas
+            // 
+            this.dtpBirthStudentas.CalendarFont = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpBirthStudentas.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpBirthStudentas.Location = new System.Drawing.Point(11, 115);
+            this.dtpBirthStudentas.Name = "dtpBirthStudentas";
+            this.dtpBirthStudentas.Size = new System.Drawing.Size(228, 23);
+            this.dtpBirthStudentas.TabIndex = 23;
+            this.dtpBirthStudentas.Value = new System.DateTime(1998, 12, 9, 0, 0, 0, 0);
+            this.dtpBirthStudentas.ValueChanged += new System.EventHandler(this.dtpBirthStudentas_ValueChanged);
+            // 
+            // txtSurnameStudentas
+            // 
+            this.txtSurnameStudentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSurnameStudentas.Font = new System.Drawing.Font("Verdana", 12F);
+            this.txtSurnameStudentas.ForeColor = System.Drawing.Color.Gray;
+            this.txtSurnameStudentas.Location = new System.Drawing.Point(12, 89);
+            this.txtSurnameStudentas.Name = "txtSurnameStudentas";
+            this.txtSurnameStudentas.Size = new System.Drawing.Size(226, 20);
+            this.txtSurnameStudentas.TabIndex = 19;
+            this.txtSurnameStudentas.Text = "Pavarde";
+            // 
+            // txtNameStudentas
+            // 
+            this.txtNameStudentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNameStudentas.Font = new System.Drawing.Font("Verdana", 12F);
+            this.txtNameStudentas.ForeColor = System.Drawing.Color.Gray;
+            this.txtNameStudentas.Location = new System.Drawing.Point(12, 63);
+            this.txtNameStudentas.Name = "txtNameStudentas";
+            this.txtNameStudentas.Size = new System.Drawing.Size(226, 20);
+            this.txtNameStudentas.TabIndex = 20;
+            this.txtNameStudentas.Text = "Vardas";
+            // 
+            // cmbFacultyStudentas
+            // 
+            this.cmbFacultyStudentas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFacultyStudentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbFacultyStudentas.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.cmbFacultyStudentas.FormattingEnabled = true;
+            this.cmbFacultyStudentas.Location = new System.Drawing.Point(12, 34);
+            this.cmbFacultyStudentas.Name = "cmbFacultyStudentas";
+            this.cmbFacultyStudentas.Size = new System.Drawing.Size(226, 21);
+            this.cmbFacultyStudentas.TabIndex = 18;
             // 
             // btnClose
             // 
@@ -422,102 +706,6 @@ namespace UniversitySQL
             this.panel3.Size = new System.Drawing.Size(62, 10);
             this.panel3.TabIndex = 0;
             // 
-            // btnConfirmUpdateDalykas
-            // 
-            this.btnConfirmUpdateDalykas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.btnConfirmUpdateDalykas.FlatAppearance.BorderSize = 0;
-            this.btnConfirmUpdateDalykas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfirmUpdateDalykas.ForeColor = System.Drawing.Color.Black;
-            this.btnConfirmUpdateDalykas.Location = new System.Drawing.Point(244, 47);
-            this.btnConfirmUpdateDalykas.Name = "btnConfirmUpdateDalykas";
-            this.btnConfirmUpdateDalykas.Size = new System.Drawing.Size(123, 36);
-            this.btnConfirmUpdateDalykas.TabIndex = 8;
-            this.btnConfirmUpdateDalykas.UseVisualStyleBackColor = true;
-            this.btnConfirmUpdateDalykas.Click += new System.EventHandler(this.btnConfirmUpdateDalykas_Click);
-            // 
-            // cmbAKDestytojas
-            // 
-            this.cmbAKDestytojas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAKDestytojas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbAKDestytojas.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.cmbAKDestytojas.FormattingEnabled = true;
-            this.cmbAKDestytojas.Location = new System.Drawing.Point(12, 6);
-            this.cmbAKDestytojas.Name = "cmbAKDestytojas";
-            this.cmbAKDestytojas.Size = new System.Drawing.Size(226, 21);
-            this.cmbAKDestytojas.TabIndex = 12;
-            // 
-            // lblErrorLecturer
-            // 
-            this.lblErrorLecturer.AutoSize = true;
-            this.lblErrorLecturer.Font = new System.Drawing.Font("Trajan Pro", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorLecturer.Location = new System.Drawing.Point(15, 141);
-            this.lblErrorLecturer.Name = "lblErrorLecturer";
-            this.lblErrorLecturer.Size = new System.Drawing.Size(0, 15);
-            this.lblErrorLecturer.TabIndex = 13;
-            // 
-            // cmbFacultyDestytojas
-            // 
-            this.cmbFacultyDestytojas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbFacultyDestytojas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbFacultyDestytojas.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.cmbFacultyDestytojas.FormattingEnabled = true;
-            this.cmbFacultyDestytojas.Location = new System.Drawing.Point(12, 34);
-            this.cmbFacultyDestytojas.Name = "cmbFacultyDestytojas";
-            this.cmbFacultyDestytojas.Size = new System.Drawing.Size(226, 21);
-            this.cmbFacultyDestytojas.TabIndex = 14;
-            // 
-            // cmbDegreeDestytojas
-            // 
-            this.cmbDegreeDestytojas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDegreeDestytojas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbDegreeDestytojas.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.cmbDegreeDestytojas.FormattingEnabled = true;
-            this.cmbDegreeDestytojas.Items.AddRange(new object[] {
-            "Docentas",
-            "Lektorius",
-            "Asistentas"});
-            this.cmbDegreeDestytojas.Location = new System.Drawing.Point(12, 115);
-            this.cmbDegreeDestytojas.Name = "cmbDegreeDestytojas";
-            this.cmbDegreeDestytojas.Size = new System.Drawing.Size(226, 21);
-            this.cmbDegreeDestytojas.TabIndex = 15;
-            // 
-            // txtAKDestytojas
-            // 
-            this.txtAKDestytojas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAKDestytojas.Font = new System.Drawing.Font("Verdana", 12F);
-            this.txtAKDestytojas.ForeColor = System.Drawing.Color.Gray;
-            this.txtAKDestytojas.Location = new System.Drawing.Point(12, 6);
-            this.txtAKDestytojas.Name = "txtAKDestytojas";
-            this.txtAKDestytojas.Size = new System.Drawing.Size(226, 20);
-            this.txtAKDestytojas.TabIndex = 16;
-            this.txtAKDestytojas.Text = "AK";
-            // 
-            // btnConfirmAddDestytojas
-            // 
-            this.btnConfirmAddDestytojas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.btnConfirmAddDestytojas.FlatAppearance.BorderSize = 0;
-            this.btnConfirmAddDestytojas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfirmAddDestytojas.ForeColor = System.Drawing.Color.Black;
-            this.btnConfirmAddDestytojas.Location = new System.Drawing.Point(244, 7);
-            this.btnConfirmAddDestytojas.Name = "btnConfirmAddDestytojas";
-            this.btnConfirmAddDestytojas.Size = new System.Drawing.Size(123, 36);
-            this.btnConfirmAddDestytojas.TabIndex = 17;
-            this.btnConfirmAddDestytojas.UseVisualStyleBackColor = true;
-            this.btnConfirmAddDestytojas.Click += new System.EventHandler(this.btnConfirmAddDestytojas_Click);
-            // 
-            // btnConfirmUpdateDestytojas
-            // 
-            this.btnConfirmUpdateDestytojas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.btnConfirmUpdateDestytojas.FlatAppearance.BorderSize = 0;
-            this.btnConfirmUpdateDestytojas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfirmUpdateDestytojas.ForeColor = System.Drawing.Color.Black;
-            this.btnConfirmUpdateDestytojas.Location = new System.Drawing.Point(244, 47);
-            this.btnConfirmUpdateDestytojas.Name = "btnConfirmUpdateDestytojas";
-            this.btnConfirmUpdateDestytojas.Size = new System.Drawing.Size(123, 36);
-            this.btnConfirmUpdateDestytojas.TabIndex = 18;
-            this.btnConfirmUpdateDestytojas.UseVisualStyleBackColor = true;
-            this.btnConfirmUpdateDestytojas.Click += new System.EventHandler(this.btnConfirmUpdateDestytojas_Click);
-            // 
             // EditWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -537,6 +725,8 @@ namespace UniversitySQL
             this.tabDalykas.PerformLayout();
             this.tabDestytojas.ResumeLayout(false);
             this.tabDestytojas.PerformLayout();
+            this.tabStudentas.ResumeLayout(false);
+            this.tabStudentas.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -620,9 +810,22 @@ namespace UniversitySQL
         private System.Windows.Forms.ComboBox cmbAKDestytojas;
         private System.Windows.Forms.Label lblErrorLecturer;
         private System.Windows.Forms.ComboBox cmbFacultyDestytojas;
-        private System.Windows.Forms.ComboBox cmbDegreeDestytojas;
         private System.Windows.Forms.TextBox txtAKDestytojas;
         private System.Windows.Forms.Button btnConfirmAddDestytojas;
         private System.Windows.Forms.Button btnConfirmUpdateDestytojas;
+        private System.Windows.Forms.ComboBox cmbDegreeDestytojas;
+        private System.Windows.Forms.ComboBox cmbLSPStudentas;
+        private System.Windows.Forms.DateTimePicker dtpBirthStudentas;
+        private System.Windows.Forms.TextBox txtSurnameStudentas;
+        private System.Windows.Forms.TextBox txtNameStudentas;
+        private System.Windows.Forms.ComboBox cmbFacultyStudentas;
+        private System.Windows.Forms.ComboBox cmbDegreeStudentas;
+        private System.Windows.Forms.Button btnDeleteStudentas;
+        private System.Windows.Forms.Button btnUpdateStudentas;
+        private System.Windows.Forms.Button btnAddStudentas;
+        private System.Windows.Forms.Label lblErrorStudent;
+        private System.Windows.Forms.Button btnConfirmUpdateStudentas;
+        private System.Windows.Forms.Button btnConfirmAddStudentas;
+        private System.Windows.Forms.TextBox txtLSPStudentas;
     }
 }

@@ -20,11 +20,13 @@ namespace UniversitySQL
         Fakultetas exsistingFaculty = null;
         Dalykas exsistingCourse = null;
         Destytojas exsistingLecturer = null;
+        Studentas exsistingStudent = null;
 
         string tempTextBoxText;
 
         Dictionary<Guid, string> CourseIDs = new Dictionary<Guid, string>();
         Dictionary<string, string> LecturersAKs = new Dictionary<string, string>();
+        Dictionary<string, string> StudentLSPs = new Dictionary<string, string>();
 
         public EditWindow()
         {
@@ -32,12 +34,17 @@ namespace UniversitySQL
             UpdateIdsDalykas();
             UpdateAKsDestytojas();
             UpdateFaculties();
+            UpdateLSPStudentas();
             cmbDegreeDestytojas.SelectedIndex = 0;
+            cmbDegreeStudentas.SelectedIndex = 0;
             btnConfirmUpdateFakultetas.Hide();
             btnConfirmUpdateDalykas.Hide();
             btnConfirmAddDestytojas.Hide();
             btnConfirmUpdateDestytojas.Hide();
+            btnConfirmAddStudentas.Hide();
+            btnConfirmUpdateStudentas.Hide();
             txtAKDestytojas.Hide();
+            txtLSPStudentas.Hide();
         }
 
         protected override void WndProc(ref Message m)
@@ -403,7 +410,6 @@ namespace UniversitySQL
             {
                 if (cmbAKDestytojas.SelectedIndex != 0)
                     throw new ArgumentException("Norint pridėti" + Environment.NewLine + "pasirinkite \"Sukurti naują\"");
-                CheckDestytojasInfo();
             }
             catch (Exception exc)
             {
@@ -445,6 +451,7 @@ namespace UniversitySQL
         private void UpdateFaculties()
         {
             cmbFacultyDestytojas.Items.Clear();
+            cmbFacultyStudentas.Items.Clear();
 
             using (var db = new UniversityContext())
             {
@@ -454,8 +461,10 @@ namespace UniversitySQL
                 foreach (var item in query)
                 {
                     cmbFacultyDestytojas.Items.Add(item);
+                    cmbFacultyStudentas.Items.Add(item);
                 }
                 cmbFacultyDestytojas.SelectedIndex = 0;
+                cmbFacultyStudentas.SelectedIndex = 0;
             }
         }
 
@@ -502,6 +511,8 @@ namespace UniversitySQL
             {
                 if (!new System.Text.RegularExpressions.Regex(@"[3-6][0-9]{2}[0,1][0-9][0-9]{2}[0-9]{4}").IsMatch(txtAKDestytojas.Text))
                     throw new ArgumentException("Asmens kodas turi būti legalus");
+                else if (LecturersAKs.ContainsKey(txtAKDestytojas.Text))
+                    throw new ArgumentException("Toks Asmens kodas" + Environment.NewLine + "jau yra duomenų bazėje!");
                 CheckDestytojasInfo();
             }
             catch (Exception exc)
@@ -614,6 +625,280 @@ namespace UniversitySQL
                 }
             }
             UpdateAKsDestytojas();
+        }
+
+        private void UpdateLSPStudentas()
+        {
+            StudentLSPs.Clear();
+            cmbLSPStudentas.Items.Clear();
+            StudentLSPs.Add("0101010", "Sukurti naują");
+            cmbLSPStudentas.Items.Add("LSP_Nr:Sukurti naują");
+
+            using (var db = new UniversityContext())
+            {
+                var query = from a in db.Studentas
+                            select a;
+
+                foreach (var item in query)
+                {
+                    StudentLSPs.Add(item.LSP_Nr, item.LSP_Nr + ":" + item.Vardas + " " + item.Pavarde);
+                    cmbLSPStudentas.Items.Add(item.LSP_Nr + ":" + item.Vardas + " " + item.Pavarde);
+                }
+                cmbLSPStudentas.SelectedIndex = 0;
+            }
+        }
+
+        private void btnAddStudentas_Click(object sender, EventArgs e)
+        {
+            txtNameStudentas.BackColor = SystemColors.Control;
+            txtSurnameStudentas.BackColor = SystemColors.Control;
+
+            try
+            {
+                if (cmbLSPStudentas.SelectedIndex != 0)
+                    throw new ArgumentException("Norint pridėti" + Environment.NewLine + "pasirinkite \"Sukurti naują\"");
+            }
+            catch (Exception exc)
+            {
+                lblErrorStudent.Text = exc.Message;
+                return;
+            }
+
+            txtLSPStudentas.Show();
+            btnConfirmAddStudentas.Show();
+            cmbLSPStudentas.Hide();
+            btnConfirmAddStudentas.Text = "Patvirtinti";
+            btnConfirmAddStudentas.BackColor = Color.Green;
+            lblErrorStudent.Text = "Įveskite pakeitimus" + Environment.NewLine + "ir paspauskite patvirtinti";
+            btnDeleteStudentas.Enabled = false;
+            btnUpdateStudentas.Enabled = false;
+        }
+
+        private void CheckStudentasInfo()
+        {
+            try
+            {
+                if (!new System.Text.RegularExpressions.Regex(@"^\d{7}").IsMatch(txtLSPStudentas.Text))
+                    throw new ArgumentException("LSP numeri turi sudaryti" + Environment.NewLine + "7 skaitmenys");
+                else if (txtNameStudentas.Text.Length > 15)
+                {
+                    txtNameStudentas.BackColor = Color.Salmon;
+                    throw new ArgumentException("Pavadinimas negali būti" + Environment.NewLine + "ilgesnis negu 15 simbolių");
+                }
+                else if (string.IsNullOrWhiteSpace(txtNameStudentas.Text))
+                {
+                    txtNameDestytojas.BackColor = Color.Salmon;
+                    throw new ArgumentNullException(txtNameStudentas.Text);
+                }
+                else if (txtSurnameStudentas.Text.Length > 20)
+                {
+                    txtSurnameStudentas.BackColor = Color.Salmon;
+                    throw new ArgumentException("Pavadinimas negali būti" + Environment.NewLine + "ilgesnis negu 20 simbolių");
+                }
+                else if (string.IsNullOrWhiteSpace(txtSurnameStudentas.Text))
+                {
+                    txtSurnameStudentas.BackColor = Color.Salmon;
+                    throw new ArgumentNullException(txtSurnameStudentas.Text);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void btnConfirmAddStudentas_Click(object sender, EventArgs e)
+        {
+            txtLSPStudentas.Hide();
+            btnConfirmAddStudentas.Hide();
+            cmbLSPStudentas.Show();
+            btnDeleteStudentas.Enabled = true;
+            btnUpdateStudentas.Enabled = true;
+
+            try
+            {
+                if (StudentLSPs.ContainsKey(txtLSPStudentas.Text))
+                    throw new ArgumentException("Toks LSP numeris" + Environment.NewLine + "jau yra duomenų bazėje!");
+                CheckStudentasInfo();
+            }
+            catch (Exception exc)
+            {
+                lblErrorStudent.Text = exc.Message;
+                return;
+            }
+
+            using (var db = new UniversityContext())
+            {
+                Studentas student = new Studentas();
+                student.LSP_Nr  = txtLSPStudentas.Text;
+                student.Fakultetas = cmbFacultyStudentas.SelectedItem.ToString();
+                student.Vardas = txtNameStudentas.Text;
+                student.Pavarde = txtSurnameStudentas.Text;
+                student.Gimimas = dtpBirthStudentas.Value;
+                
+                switch(cmbDegreeStudentas.SelectedIndex)
+                {
+                    case 0:
+                        student.Kursas = 1;
+                        student.Pakopa = "Bakalauras";
+                        break;
+                    case 1:
+                        student.Kursas = 2;
+                        student.Pakopa = "Bakalauras";
+                        break;
+                    case 2:
+                        student.Kursas = 3;
+                        student.Pakopa = "Bakalauras";
+                        break;
+                    case 3:
+                        student.Kursas = 4;
+                        student.Pakopa = "Bakalauras";
+                        break;
+                    case 4:
+                        student.Kursas = 1;
+                        student.Pakopa = "Magistras";
+                        break;
+                    case 5:
+                        student.Kursas = 2;
+                        student.Pakopa = "Magistras";
+                        break;
+                }
+
+                db.Studentas.Add(student);
+                db.SaveChanges();
+            }
+            lblErrorStudent.Text = "Įvesta";
+            UpdateLSPStudentas();
+        }
+
+        private void dtpBirthStudentas_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dtpBirthStudentas.Value < new DateTime(1900, 01, 01))
+                    throw new DateOutOfRangeException(new DateTime(1900, 01, 01), "Metai negali būti" + Environment.NewLine + "ankstesni nei 1900-01-01!");
+                else if (dtpBirthStudentas.Value > DateTime.Today.AddYears(-18))
+                    throw new DateOutOfRangeException(DateTime.Today.AddYears(-18), "Studentas turi būti" + Environment.NewLine + "18 metų arba vyresnis!");
+            }
+            catch (DateOutOfRangeException exc)
+            {
+                lblErrorStudent.Text = exc.Message;
+                dtpBirthStudentas.Value = exc.Time;
+            }
+        }
+
+        private void btnUpdateStudentas_Click(object sender, EventArgs e)
+        {
+            using (var db = new UniversityContext())
+            {
+                exsistingStudent = db.Studentas.Find(StudentLSPs.FirstOrDefault(x => x.Value == cmbLSPStudentas.SelectedItem.ToString()).Key);
+                if (exsistingStudent != null)
+                {
+                    btnConfirmUpdateStudentas.Show();
+                    btnConfirmUpdateStudentas.Text = "Patvirtinti";
+                    btnConfirmUpdateStudentas.BackColor = Color.Green;
+                    lblErrorStudent.Text = "Įveskite pakeitimus" + Environment.NewLine + "ir paspauskite patvirtinti";
+                    cmbLSPStudentas.Enabled = false;
+                    btnDeleteStudentas.Enabled = false;
+                    btnAddStudentas.Enabled = false;
+                    cmbFacultyStudentas.Enabled = false;
+                }
+            }
+        }
+
+        private void btnConfirmUpdateStudentas_Click(object sender, EventArgs e)
+        {
+            btnConfirmUpdateStudentas.Hide();
+            cmbLSPStudentas.Enabled = true;
+            btnDeleteStudentas.Enabled = true;
+            btnAddStudentas.Enabled = true;
+            cmbFacultyStudentas.Enabled = true;
+
+            try
+            {
+                CheckStudentasInfo();
+            }
+            catch (Exception exc)
+            {
+                lblErrorStudent.Text = exc.Message;
+                return;
+            }
+
+            using (var db = new UniversityContext())
+            {
+                exsistingStudent.Vardas = txtNameStudentas.Text;
+                exsistingStudent.Pavarde = txtSurnameStudentas.Text;
+                exsistingStudent.Gimimas = dtpBirthStudentas.Value;
+                switch (cmbDegreeStudentas.SelectedIndex)
+                {
+                    case 0:
+                        exsistingStudent.Kursas = 1;
+                        exsistingStudent.Pakopa = "Bakalauras";
+                        break;
+                    case 1:
+                        exsistingStudent.Kursas = 2;
+                        exsistingStudent.Pakopa = "Bakalauras";
+                        break;
+                    case 2:
+                        exsistingStudent.Kursas = 3;
+                        exsistingStudent.Pakopa = "Bakalauras";
+                        break;
+                    case 3:
+                        exsistingStudent.Kursas = 4;
+                        exsistingStudent.Pakopa = "Bakalauras";
+                        break;
+                    case 4:
+                        exsistingStudent.Kursas = 1;
+                        exsistingStudent.Pakopa = "Magistras";
+                        break;
+                    case 5:
+                        exsistingStudent.Kursas = 2;
+                        exsistingStudent.Pakopa = "Magistras";
+                        break;
+                }
+
+                db.Entry(exsistingStudent).State = System.Data.Entity.EntityState.Modified;
+
+                bool saveFailed;
+                do
+                {
+                    saveFailed = false;
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (System.Data.Entity.Infrastructure.DbUpdateConcurrencyException ex)
+                    {
+                        saveFailed = true;
+                        ex.Entries.Single().Reload();
+                    }
+
+                } while (saveFailed);
+
+            }
+            lblErrorStudent.Text = "Pakeista";
+            UpdateLSPStudentas();
+        }
+
+        private void btnDeleteStudentas_Click(object sender, EventArgs e)
+        {
+            if (cmbLSPStudentas.SelectedIndex == 0)
+            {
+                lblErrorStudent.Text = "Pirma pasirinkite Destytoją";
+                return;
+            }
+
+            using (var db = new UniversityContext())
+            {
+                exsistingStudent = db.Studentas.Find(StudentLSPs.FirstOrDefault(x => x.Value == cmbLSPStudentas.SelectedItem.ToString()).Key);
+                if (exsistingStudent != null)
+                {
+                    db.Studentas.Remove(exsistingStudent);
+                    lblErrorStudent.Text = "Ištrinta";
+                    db.SaveChanges();
+                }
+            }
+            UpdateLSPStudentas();
         }
     }
 }
