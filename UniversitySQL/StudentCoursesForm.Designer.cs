@@ -1,0 +1,218 @@
+﻿namespace UniversitySQL
+{
+    partial class StudentCoursesForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.btnClose = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.Registruoti = new System.Windows.Forms.TabPage();
+            this.lblErrorRegister = new System.Windows.Forms.Label();
+            this.btnRegister = new System.Windows.Forms.Button();
+            this.cmbCourses = new System.Windows.Forms.ComboBox();
+            this.cmbLSPStudent = new System.Windows.Forms.ComboBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lblErrorUnregister = new System.Windows.Forms.Label();
+            this.btnUnregister = new System.Windows.Forms.Button();
+            this.cmbStudentCourses = new System.Windows.Forms.ComboBox();
+            this.cmbStudentDelete = new System.Windows.Forms.ComboBox();
+            this.tabControl1.SuspendLayout();
+            this.Registruoti.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // btnClose
+            // 
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
+            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(98)))), ((int)(((byte)(146)))));
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Location = new System.Drawing.Point(231, 0);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(23, 19);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Text = "X";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.Registruoti);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(250, 111);
+            this.tabControl1.TabIndex = 3;
+            // 
+            // Registruoti
+            // 
+            this.Registruoti.Controls.Add(this.lblErrorRegister);
+            this.Registruoti.Controls.Add(this.btnRegister);
+            this.Registruoti.Controls.Add(this.cmbCourses);
+            this.Registruoti.Controls.Add(this.cmbLSPStudent);
+            this.Registruoti.Location = new System.Drawing.Point(4, 22);
+            this.Registruoti.Name = "Registruoti";
+            this.Registruoti.Padding = new System.Windows.Forms.Padding(3);
+            this.Registruoti.Size = new System.Drawing.Size(242, 85);
+            this.Registruoti.TabIndex = 0;
+            this.Registruoti.Text = "Registruoti";
+            this.Registruoti.UseVisualStyleBackColor = true;
+            // 
+            // lblErrorRegister
+            // 
+            this.lblErrorRegister.AutoSize = true;
+            this.lblErrorRegister.Location = new System.Drawing.Point(8, 59);
+            this.lblErrorRegister.Name = "lblErrorRegister";
+            this.lblErrorRegister.Size = new System.Drawing.Size(0, 13);
+            this.lblErrorRegister.TabIndex = 10;
+            // 
+            // btnRegister
+            // 
+            this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnRegister.FlatAppearance.BorderSize = 0;
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegister.ForeColor = System.Drawing.Color.Black;
+            this.btnRegister.Location = new System.Drawing.Point(160, 59);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(74, 23);
+            this.btnRegister.TabIndex = 9;
+            this.btnRegister.Text = "Registruoti";
+            this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            // 
+            // cmbCourses
+            // 
+            this.cmbCourses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCourses.FormattingEnabled = true;
+            this.cmbCourses.Location = new System.Drawing.Point(8, 33);
+            this.cmbCourses.Name = "cmbCourses";
+            this.cmbCourses.Size = new System.Drawing.Size(226, 21);
+            this.cmbCourses.TabIndex = 8;
+            // 
+            // cmbLSPStudent
+            // 
+            this.cmbLSPStudent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLSPStudent.FormattingEnabled = true;
+            this.cmbLSPStudent.Location = new System.Drawing.Point(8, 6);
+            this.cmbLSPStudent.Name = "cmbLSPStudent";
+            this.cmbLSPStudent.Size = new System.Drawing.Size(226, 21);
+            this.cmbLSPStudent.TabIndex = 7;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.lblErrorUnregister);
+            this.tabPage2.Controls.Add(this.btnUnregister);
+            this.tabPage2.Controls.Add(this.cmbStudentCourses);
+            this.tabPage2.Controls.Add(this.cmbStudentDelete);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(242, 85);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Šalinti";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // lblErrorUnregister
+            // 
+            this.lblErrorUnregister.AutoSize = true;
+            this.lblErrorUnregister.Location = new System.Drawing.Point(8, 59);
+            this.lblErrorUnregister.Name = "lblErrorUnregister";
+            this.lblErrorUnregister.Size = new System.Drawing.Size(0, 13);
+            this.lblErrorUnregister.TabIndex = 14;
+            // 
+            // btnUnregister
+            // 
+            this.btnUnregister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnUnregister.FlatAppearance.BorderSize = 0;
+            this.btnUnregister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUnregister.ForeColor = System.Drawing.Color.Black;
+            this.btnUnregister.Location = new System.Drawing.Point(160, 59);
+            this.btnUnregister.Name = "btnUnregister";
+            this.btnUnregister.Size = new System.Drawing.Size(74, 23);
+            this.btnUnregister.TabIndex = 13;
+            this.btnUnregister.Text = "Šalinti";
+            this.btnUnregister.UseVisualStyleBackColor = true;
+            this.btnUnregister.Click += new System.EventHandler(this.btnUnregister_Click);
+            // 
+            // cmbStudentCourses
+            // 
+            this.cmbStudentCourses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbStudentCourses.FormattingEnabled = true;
+            this.cmbStudentCourses.Location = new System.Drawing.Point(8, 33);
+            this.cmbStudentCourses.Name = "cmbStudentCourses";
+            this.cmbStudentCourses.Size = new System.Drawing.Size(226, 21);
+            this.cmbStudentCourses.TabIndex = 12;
+            // 
+            // cmbStudentDelete
+            // 
+            this.cmbStudentDelete.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbStudentDelete.FormattingEnabled = true;
+            this.cmbStudentDelete.Location = new System.Drawing.Point(8, 6);
+            this.cmbStudentDelete.Name = "cmbStudentDelete";
+            this.cmbStudentDelete.Size = new System.Drawing.Size(226, 21);
+            this.cmbStudentDelete.TabIndex = 11;
+            this.cmbStudentDelete.SelectedIndexChanged += new System.EventHandler(this.cmbStudentDelete_SelectedIndexChanged);
+            // 
+            // StudentCoursesForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(251, 112);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "StudentCoursesForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "TaughtCoursesForm";
+            this.tabControl1.ResumeLayout(false);
+            this.Registruoti.ResumeLayout(false);
+            this.Registruoti.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage Registruoti;
+        private System.Windows.Forms.Label lblErrorRegister;
+        private System.Windows.Forms.Button btnRegister;
+        private System.Windows.Forms.ComboBox cmbCourses;
+        private System.Windows.Forms.ComboBox cmbLSPStudent;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label lblErrorUnregister;
+        private System.Windows.Forms.Button btnUnregister;
+        private System.Windows.Forms.ComboBox cmbStudentCourses;
+        private System.Windows.Forms.ComboBox cmbStudentDelete;
+    }
+}

@@ -100,6 +100,18 @@
     <Compile Include="Studentas.cs">
       <DependentUpon>UniversityContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="StudentCoursesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentCoursesForm.Designer.cs">
+      <DependentUpon>StudentCoursesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TaughtCoursesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaughtCoursesForm.Designer.cs">
+      <DependentUpon>TaughtCoursesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UniversityContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -131,6 +143,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="StudentCoursesForm.resx">
+      <DependentUpon>StudentCoursesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaughtCoursesForm.resx">
+      <DependentUpon>TaughtCoursesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Dalykas.datasource" />
     <None Include="Properties\DataSources\Destytojas.datasource" />

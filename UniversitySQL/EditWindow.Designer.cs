@@ -41,6 +41,8 @@ namespace UniversitySQL
             this.txtAddressFakultetas = new System.Windows.Forms.TextBox();
             this.txtTitleFakultetas = new System.Windows.Forms.TextBox();
             this.tabDalykas = new System.Windows.Forms.TabPage();
+            this.bntStudiedCourses = new System.Windows.Forms.Button();
+            this.btnTaughtCourses = new System.Windows.Forms.Button();
             this.cmbIDDalykas = new System.Windows.Forms.ComboBox();
             this.lblErrorCourse = new System.Windows.Forms.Label();
             this.btnDeleteDalykas = new System.Windows.Forms.Button();
@@ -96,7 +98,7 @@ namespace UniversitySQL
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(0, 0);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(402, 305);
+            this.tabControl1.Size = new System.Drawing.Size(402, 202);
             this.tabControl1.TabIndex = 0;
             // 
             // tabFakultetas
@@ -113,7 +115,7 @@ namespace UniversitySQL
             this.tabFakultetas.Location = new System.Drawing.Point(4, 25);
             this.tabFakultetas.Name = "tabFakultetas";
             this.tabFakultetas.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFakultetas.Size = new System.Drawing.Size(394, 276);
+            this.tabFakultetas.Size = new System.Drawing.Size(394, 173);
             this.tabFakultetas.TabIndex = 0;
             this.tabFakultetas.Text = "Fakultetas";
             // 
@@ -218,6 +220,8 @@ namespace UniversitySQL
             // tabDalykas
             // 
             this.tabDalykas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(107)))), ((int)(((byte)(192)))));
+            this.tabDalykas.Controls.Add(this.bntStudiedCourses);
+            this.tabDalykas.Controls.Add(this.btnTaughtCourses);
             this.tabDalykas.Controls.Add(this.cmbIDDalykas);
             this.tabDalykas.Controls.Add(this.lblErrorCourse);
             this.tabDalykas.Controls.Add(this.btnDeleteDalykas);
@@ -229,9 +233,29 @@ namespace UniversitySQL
             this.tabDalykas.Location = new System.Drawing.Point(4, 25);
             this.tabDalykas.Name = "tabDalykas";
             this.tabDalykas.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDalykas.Size = new System.Drawing.Size(394, 276);
+            this.tabDalykas.Size = new System.Drawing.Size(394, 215);
             this.tabDalykas.TabIndex = 1;
             this.tabDalykas.Text = "Dalykas";
+            // 
+            // bntStudiedCourses
+            // 
+            this.bntStudiedCourses.Location = new System.Drawing.Point(155, 141);
+            this.bntStudiedCourses.Name = "bntStudiedCourses";
+            this.bntStudiedCourses.Size = new System.Drawing.Size(173, 23);
+            this.bntStudiedCourses.TabIndex = 11;
+            this.bntStudiedCourses.Text = "Studijuojami dalykai";
+            this.bntStudiedCourses.UseVisualStyleBackColor = true;
+            this.bntStudiedCourses.Click += new System.EventHandler(this.bntStudiedCourses_Click);
+            // 
+            // btnTaughtCourses
+            // 
+            this.btnTaughtCourses.Location = new System.Drawing.Point(12, 141);
+            this.btnTaughtCourses.Name = "btnTaughtCourses";
+            this.btnTaughtCourses.Size = new System.Drawing.Size(137, 23);
+            this.btnTaughtCourses.TabIndex = 11;
+            this.btnTaughtCourses.Text = "Dėstomi dalykai";
+            this.btnTaughtCourses.UseVisualStyleBackColor = true;
+            this.btnTaughtCourses.Click += new System.EventHandler(this.btnTaughtCourses_Click);
             // 
             // cmbIDDalykas
             // 
@@ -349,7 +373,7 @@ namespace UniversitySQL
             this.tabDestytojas.Location = new System.Drawing.Point(4, 25);
             this.tabDestytojas.Name = "tabDestytojas";
             this.tabDestytojas.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDestytojas.Size = new System.Drawing.Size(394, 276);
+            this.tabDestytojas.Size = new System.Drawing.Size(394, 215);
             this.tabDestytojas.TabIndex = 2;
             this.tabDestytojas.Text = "Dėstytojas";
             // 
@@ -519,7 +543,7 @@ namespace UniversitySQL
             this.tabStudentas.Location = new System.Drawing.Point(4, 25);
             this.tabStudentas.Name = "tabStudentas";
             this.tabStudentas.Padding = new System.Windows.Forms.Padding(3);
-            this.tabStudentas.Size = new System.Drawing.Size(394, 276);
+            this.tabStudentas.Size = new System.Drawing.Size(394, 173);
             this.tabStudentas.TabIndex = 3;
             this.tabStudentas.Text = "Studentas";
             // 
@@ -564,7 +588,7 @@ namespace UniversitySQL
             // 
             this.lblErrorStudent.AutoSize = true;
             this.lblErrorStudent.Font = new System.Drawing.Font("Trajan Pro", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorStudent.Location = new System.Drawing.Point(12, 172);
+            this.lblErrorStudent.Location = new System.Drawing.Point(244, 128);
             this.lblErrorStudent.Name = "lblErrorStudent";
             this.lblErrorStudent.Size = new System.Drawing.Size(0, 15);
             this.lblErrorStudent.TabIndex = 31;
@@ -701,7 +725,7 @@ namespace UniversitySQL
             // 
             // panel3
             // 
-            this.panel3.Location = new System.Drawing.Point(336, 16);
+            this.panel3.Location = new System.Drawing.Point(340, 16);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(62, 10);
             this.panel3.TabIndex = 0;
@@ -711,12 +735,13 @@ namespace UniversitySQL
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.ClientSize = new System.Drawing.Size(383, 301);
+            this.ClientSize = new System.Drawing.Size(383, 198);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EditWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditWindow";
             this.tabControl1.ResumeLayout(false);
             this.tabFakultetas.ResumeLayout(false);
@@ -827,5 +852,7 @@ namespace UniversitySQL
         private System.Windows.Forms.Button btnConfirmUpdateStudentas;
         private System.Windows.Forms.Button btnConfirmAddStudentas;
         private System.Windows.Forms.TextBox txtLSPStudentas;
+        private System.Windows.Forms.Button bntStudiedCourses;
+        private System.Windows.Forms.Button btnTaughtCourses;
     }
 }

@@ -45,6 +45,7 @@ namespace UniversitySQL
             btnConfirmUpdateStudentas.Hide();
             txtAKDestytojas.Hide();
             txtLSPStudentas.Hide();
+
         }
 
         protected override void WndProc(ref Message m)
@@ -432,7 +433,7 @@ namespace UniversitySQL
             LecturersAKs.Clear();
             cmbAKDestytojas.Items.Clear();
             LecturersAKs.Add("01010101010", "Sukurti naują");
-            cmbAKDestytojas.Items.Add("Sukurti naują");
+            cmbAKDestytojas.Items.Add("Asmens Kodas:Sukurti naują");
             cmbAKDestytojas.SelectedIndex = 0;
 
             using (var db = new UniversityContext())
@@ -678,9 +679,7 @@ namespace UniversitySQL
         {
             try
             {
-                if (!new System.Text.RegularExpressions.Regex(@"^\d{7}").IsMatch(txtLSPStudentas.Text))
-                    throw new ArgumentException("LSP numeri turi sudaryti" + Environment.NewLine + "7 skaitmenys");
-                else if (txtNameStudentas.Text.Length > 15)
+                if (txtNameStudentas.Text.Length > 15)
                 {
                     txtNameStudentas.BackColor = Color.Salmon;
                     throw new ArgumentException("Pavadinimas negali būti" + Environment.NewLine + "ilgesnis negu 15 simbolių");
@@ -717,7 +716,9 @@ namespace UniversitySQL
 
             try
             {
-                if (StudentLSPs.ContainsKey(txtLSPStudentas.Text))
+                if (!new System.Text.RegularExpressions.Regex(@"^\d{7}").IsMatch(txtLSPStudentas.Text))
+                    throw new ArgumentException("LSP numeri turi sudaryti" + Environment.NewLine + "7 skaitmenys");
+                else if (StudentLSPs.ContainsKey(txtLSPStudentas.Text))
                     throw new ArgumentException("Toks LSP numeris" + Environment.NewLine + "jau yra duomenų bazėje!");
                 CheckStudentasInfo();
             }
@@ -899,6 +900,18 @@ namespace UniversitySQL
                 }
             }
             UpdateLSPStudentas();
+        }
+
+        private void btnTaughtCourses_Click(object sender, EventArgs e)
+        {
+            TaughtCoursesForm tc = new TaughtCoursesForm(LecturersAKs);
+            tc.ShowDialog();
+        }
+
+        private void bntStudiedCourses_Click(object sender, EventArgs e)
+        {
+            StudentCoursesForm sc = new StudentCoursesForm(StudentLSPs);
+            sc.ShowDialog();
         }
     }
 }

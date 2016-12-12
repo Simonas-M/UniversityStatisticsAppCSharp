@@ -347,6 +347,7 @@ namespace UniversitySQL
                                 {
                                     chart.Series["Fakultetas"].Points.AddXY(item.Pavadinimas, item.Studentas.Count);
                                 }
+                                chart.ChartAreas[0].AxisX.MaximumAutoSize = 20;
                                 break;
                             case 3://Studentas
                                 //Negalimas
@@ -355,16 +356,6 @@ namespace UniversitySQL
                         break;
                 }
             }
-            //using (var db = new UniversityContext())
-            //{
-            //    var query = from a in db.Fakultetas
-            //                select a;
-            //    chart.Series.Add("Fakultetas");
-            //    foreach (var item in query)
-            //    {
-            //        chart.Series["Fakultetas"].Points.AddXY(item.Pavadinimas, item.Destytojas.Count);
-            //    }
-            //}
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
