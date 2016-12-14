@@ -309,6 +309,7 @@ namespace UniversitySQL
             this.dataGrid.ReadOnly = true;
             this.dataGrid.Size = new System.Drawing.Size(564, 379);
             this.dataGrid.TabIndex = 0;
+            this.dataGrid.AutoGenerateColumns = true;
             // 
             // MainWindow
             // 

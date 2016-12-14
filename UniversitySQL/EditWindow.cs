@@ -208,7 +208,15 @@ namespace UniversitySQL
                 {
                     db.Fakultetas.Remove(exsistingFaculty);
                     lblErrorFaculty.Text = "Ištrinta";
-                    db.SaveChanges();
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception)
+                    {
+                        lblErrorFaculty.Text = "Negalima ištrinti!" + Environment.NewLine + "patikrinkite ar šis fakultetas" + Environment.NewLine + "nėra naudojamas";
+                    }
+                    
                 }
                 else
                     lblErrorFaculty.Text = "Toks fakultetas nerastas!";
@@ -396,7 +404,15 @@ namespace UniversitySQL
                 {
                     db.Dalykas.Remove(exsistingCourse);
                     lblErrorCourse.Text = "Ištrinta";
-                    db.SaveChanges();
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception exc)
+                    {
+                        lblErrorCourse.Text = "Negalima ištrinti!" + Environment.NewLine + "patikrinkite ar šis dalykas" + Environment.NewLine + "nėra naudojamas";
+                    }
+                    
                 }
             }
             UpdateIdsDalykas();
@@ -622,7 +638,15 @@ namespace UniversitySQL
                 {
                     db.Destytojas.Remove(exsistingLecturer);
                     lblErrorLecturer.Text = "Ištrinta";
-                    db.SaveChanges();
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception)
+                    {
+                        lblErrorLecturer.Text = "Negalima ištrinti!" + Environment.NewLine + "patikrinkite ar šis Destytojas nedėsto dalykų";
+                    }
+                    
                 }
             }
             UpdateAKsDestytojas();
@@ -896,7 +920,15 @@ namespace UniversitySQL
                 {
                     db.Studentas.Remove(exsistingStudent);
                     lblErrorStudent.Text = "Ištrinta";
-                    db.SaveChanges();
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Negalima ištrinti!" + Environment.NewLine + "patikrinkite ar šis studentas" + Environment.NewLine + "nestudijuoja dalyku");
+                    }
+                    
                 }
             }
             UpdateLSPStudentas();

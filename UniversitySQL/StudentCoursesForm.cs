@@ -30,7 +30,6 @@ namespace UniversitySQL
             using (var db = new UniversityContext())
             {
                 var query = from a in db.Dalykas
-                            where a.Destytojas.Count != 0
                             select a;
 
                 foreach (var item in query)

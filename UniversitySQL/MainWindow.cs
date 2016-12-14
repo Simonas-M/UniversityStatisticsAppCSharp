@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,9 +20,18 @@ namespace UniversitySQL
         private const int HT_CAPTION = 0x2;
         private short VUcounter = 0;
 
+        SqlConnection con = new SqlConnection(Properties.Settings.Default.ConnectionString);
+        DataSet tables = new DataSet();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            tables.Tables.Add("Fakultetas");
+            tables.Tables.Add("Destytojas");
+            tables.Tables.Add("Dalykas");
+            tables.Tables.Add("Studentas");
+
             this.chart.ChartAreas["ChartArea1"].BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             dataGrid.Hide();
             chart.Hide();
@@ -51,112 +62,56 @@ namespace UniversitySQL
         {
             HideAll();
             dataGrid.Show();
-            using (var db = new UniversityContext())
-            {
-                var query = from a in db.Fakultetas
-                                        select a;
 
-                var listas = query.ToList();
+            string query = "SELECT * FROM [dbo].[Fakultetas]";
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            tables.Tables["Fakultetas"].Clear();
+            adapter.Fill(tables, "Fakultetas");
 
-                dataGrid.Rows.Clear();
-                dataGrid.Columns.Clear();
-                dataGrid.Refresh();
-
-                dataGrid.Columns.Add("Pavadinimas", "Pavadinimas");
-                dataGrid.Columns.Add("Adresas", "Adresas");
-                dataGrid.Columns.Add("Telefono_Nr", "Telefono_Nr");
-
-                for (int i = 0; i < listas.Count; i++)
-                {
-                    dataGrid.Rows.Add(listas[i].Pavadinimas, listas[i].Adresas, listas[i].Telefono_Nr);
-                }
-            }
+            DataTable faculties = tables.Tables["Fakultetas"];
+            dataGrid.DataSource = faculties;
         }
 
         private void btnDestotojai_Click(object sender, EventArgs e)
         {
             HideAll();
             dataGrid.Show();
-            using (var db = new UniversityContext())
-            {
-                var query = from a in db.Destytojas
-                            select a;
 
-                var listas = query.ToList();
+            string query = "SELECT * FROM [dbo].[Destytojas]";
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            tables.Tables["Destytojas"].Clear();
+            adapter.Fill(tables, "Destytojas");
 
-                dataGrid.Rows.Clear();
-                dataGrid.Columns.Clear();
-                dataGrid.Refresh();
-
-
-                dataGrid.Columns.Add("AK", "AK");
-                dataGrid.Columns.Add("Fakultetas", "Fakultetas");
-                dataGrid.Columns.Add("Vardas", "Vardas");
-                dataGrid.Columns.Add("Pavarde", "Pavarde");
-                dataGrid.Columns.Add("Laipsnis", "Laipsnis");
-
-                for (int i = 0; i < listas.Count; i++)
-                {
-                    dataGrid.Rows.Add(listas[i].Asmens_Kodas, listas[i].Fakultetas, listas[i].Vardas, listas[i].Pavarde, listas[i].Laipsnis);
-                }
-            }
+            DataTable lecturers = tables.Tables["Destytojas"];
+            dataGrid.DataSource = lecturers;
         }
 
         private void btnStudentai_Click(object sender, EventArgs e)
         {
             HideAll();
             dataGrid.Show();
-            using (var db = new UniversityContext())
-            {
-                var query = from a in db.Studentas
-                            select a;
 
-                var listas = query.ToList();
+            string query = "SELECT * FROM [dbo].[Studentas]";
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            tables.Tables["Studentas"].Clear();
+            adapter.Fill(tables, "Studentas");
 
-                dataGrid.Rows.Clear();
-                dataGrid.Columns.Clear();
-                dataGrid.Refresh();
-
-
-                dataGrid.Columns.Add("LSP", "LSP");
-                dataGrid.Columns.Add("Vardas", "Vardas");
-                dataGrid.Columns.Add("Pavarde", "Pavarde");
-                dataGrid.Columns.Add("Gimimas", "Gimimas");
-                dataGrid.Columns.Add("Pakopa", "Pakopa");
-                dataGrid.Columns.Add("Kursas", "Kursas");
-
-                for (int i = 0; i < listas.Count; i++)
-                {
-                    dataGrid.Rows.Add(listas[i].LSP_Nr, listas[i].Vardas, listas[i].Pavarde, listas[i].Gimimas.ToShortDateString(), listas[i].Pakopa, listas[i].Kursas);
-                }
-            }
+            DataTable student = tables.Tables["Studentas"];
+            dataGrid.DataSource = student;
         }
 
         private void btnDalykai_Click(object sender, EventArgs e)
         {
             HideAll();
             dataGrid.Show();
-            using (var db = new UniversityContext())
-            {
-                var query = from a in db.Dalykas
-                            select a;
 
-                var listas = query.ToList();
+            string query = "SELECT * FROM [dbo].[Dalykas]";
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            tables.Tables["Dalykas"].Clear();
+            adapter.Fill(tables, "Dalykas");
 
-                dataGrid.Rows.Clear();
-                dataGrid.Columns.Clear();
-                dataGrid.Refresh();
-
-
-                dataGrid.Columns.Add("ID", "ID");
-                dataGrid.Columns.Add("Pavadinimas", "Pavadinimas");
-                dataGrid.Columns.Add("Kreditu_Skaicius", "Kreditu_Skaicius");
-
-                for (int i = 0; i < listas.Count; i++)
-                {
-                    dataGrid.Rows.Add(listas[i].ID, listas[i].Pavadinimas, listas[i].Kreditu_Sk);
-                }
-            }
+            DataTable course = tables.Tables["Dalykas"];
+            dataGrid.DataSource = course;
         }
 
         private void btnStatistika_Click(object sender, EventArgs e)
@@ -215,6 +170,8 @@ namespace UniversitySQL
             chart.Series.Clear();
             chart.Titles.Clear();
             chart.Legends.Clear();
+
+            chart.ChartAreas[0].AxisX.MaximumAutoSize = 100;
             using (var db = new UniversityContext())
             {
                 switch (cmbX.SelectedIndex)
@@ -223,9 +180,7 @@ namespace UniversitySQL
                         switch(cmbY.SelectedIndex)
                         {
                             case 0://Dalykas
-                                chart.Titles.Add("Sorry No Can DO!");
-                                chart.Titles[0].Font = new Font("Trajan Pro", 30F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
-                                break;
+                                return;
                             case 1://Destytojas
                                 chart.Series.Add(series("Dėstytojas"));
                                 chart.Legends.Add(legend("Dėstytojas"));
@@ -280,7 +235,7 @@ namespace UniversitySQL
                                 break;
                             case 1://Destytojas
                                 //Negalimas
-                                break;
+                                return;
                             case 2://Fakultetas
                                 chart.Series.Add(series("Fakultetas"));
                                 chart.Legends.Add(legend("Fakultetas"));
@@ -347,14 +302,17 @@ namespace UniversitySQL
                                 {
                                     chart.Series["Fakultetas"].Points.AddXY(item.Pavadinimas, item.Studentas.Count);
                                 }
-                                chart.ChartAreas[0].AxisX.MaximumAutoSize = 20;
                                 break;
                             case 3://Studentas
                                 //Negalimas
-                                break;
+                                return;
                         }
                         break;
                 }
+                chart.ChartAreas[0].AxisX.Maximum = chart.Series[0].Points.Count+0.5;
+                chart.ChartAreas[0].AxisX.Interval = 1;
+                chart.ChartAreas[0].AxisX.IsLabelAutoFit = true;
+                chart.ChartAreas[0].RecalculateAxesScale();
             }
         }
 

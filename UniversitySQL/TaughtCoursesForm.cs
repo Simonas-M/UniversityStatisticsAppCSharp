@@ -62,6 +62,8 @@ namespace UniversitySQL
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
+            if (cmbCourses.Items.Count == 0)
+                return;
             using (var db = new UniversityContext())
             {
                 Destytojas lecturer = db.Destytojas.Find(lecturerAKs.FirstOrDefault(x => x.Value == cmbAKLecturer.SelectedItem.ToString()).Key);
@@ -95,6 +97,8 @@ namespace UniversitySQL
 
         private void btnUnregister_Click(object sender, EventArgs e)
         {
+            if (cmbLecturerCourses.Items.Count == 0)
+                return;
             using (var db = new UniversityContext())
             {
                 Destytojas lecturer = db.Destytojas.Find(lecturerAKs.FirstOrDefault(x => x.Value == cmbLecturerDelete.SelectedItem.ToString()).Key);
