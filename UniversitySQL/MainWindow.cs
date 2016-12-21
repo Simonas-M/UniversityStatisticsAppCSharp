@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Resources;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -31,6 +26,7 @@ namespace UniversitySQL
             tables.Tables.Add("Destytojas");
             tables.Tables.Add("Dalykas");
             tables.Tables.Add("Studentas");
+            tables.Tables.Add("Studentu fakultetai");
 
             this.chart.ChartAreas["ChartArea1"].BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             dataGrid.Hide();
@@ -319,7 +315,40 @@ namespace UniversitySQL
         private void btnAddNew_Click(object sender, EventArgs e)
         {
             EditWindow edit = new EditWindow();
+            this.Hide();
             edit.ShowDialog();
+            this.Show();
+        }
+
+        private void bntStudFaculties_Click(object sender, EventArgs e)
+        {
+            HideAll();
+            dataGrid.Show();
+
+            DataTable dt = new DataTable("Studentu fakultetai");
+            dt.Columns.Add("Vardas");
+            dt.Columns.Add("Pavarde");
+            dt.Columns.Add("Fakultetas");
+
+            using (var db = new UniversityContext())
+            {
+                var query1 = db.Studentas.Join(db.Fakultetas,
+                    s => s.Fakultetas,
+                    f => f.Pavadinimas,
+                    (s, group) => new
+                    {
+                        Name = s.Vardas,
+                        Surname = s.Pavarde,
+                        Faculty = s.Fakultetas
+                    });
+
+                foreach (var item in query1)
+                {
+                    dt.Rows.Add(item.Name, item.Surname, item.Faculty);
+                }
+            }
+
+            dataGrid.DataSource = dt;
         }
     }
 }

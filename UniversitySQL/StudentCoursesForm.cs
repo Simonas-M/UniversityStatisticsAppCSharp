@@ -43,7 +43,7 @@ namespace UniversitySQL
 
         private void InitializeStudents()
         {
-            foreach (var item in studentLSPs.Skip(1))
+            foreach (var item in studentLSPs.Skip(1).Take(studentLSPs.Count-1))
             {
                 cmbLSPStudent.Items.Add(item.Value);
                 cmbStudentDelete.Items.Add(item.Value);

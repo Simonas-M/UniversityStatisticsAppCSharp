@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace UniversitySQL
 {
@@ -22,8 +19,6 @@ namespace UniversitySQL
         Destytojas exsistingLecturer = null;
         Studentas exsistingStudent = null;
 
-        string tempTextBoxText;
-
         Dictionary<Guid, string> CourseIDs = new Dictionary<Guid, string>();
         Dictionary<string, string> LecturersAKs = new Dictionary<string, string>();
         Dictionary<string, string> StudentLSPs = new Dictionary<string, string>();
@@ -31,12 +26,17 @@ namespace UniversitySQL
         public EditWindow()
         {
             InitializeComponent();
+
+            AddOnClickEventsOnTextBoxes();
+
             UpdateIdsDalykas();
             UpdateAKsDestytojas();
             UpdateFaculties();
             UpdateLSPStudentas();
+
             cmbDegreeDestytojas.SelectedIndex = 0;
             cmbDegreeStudentas.SelectedIndex = 0;
+
             btnConfirmUpdateFakultetas.Hide();
             btnConfirmUpdateDalykas.Hide();
             btnConfirmAddDestytojas.Hide();
@@ -45,7 +45,6 @@ namespace UniversitySQL
             btnConfirmUpdateStudentas.Hide();
             txtAKDestytojas.Hide();
             txtLSPStudentas.Hide();
-
         }
 
         protected override void WndProc(ref Message m)
@@ -69,22 +68,22 @@ namespace UniversitySQL
                     txtTitleFakultetas.BackColor = Color.Salmon;
                     throw new ArgumentException("Pavadinimas negali būti" + Environment.NewLine + "ilgesnis negu 38 simboliai");
                 }
-                else if (string.IsNullOrWhiteSpace(txtTitleFakultetas.Text))
+                if (string.IsNullOrWhiteSpace(txtTitleFakultetas.Text))
                 {
                     txtTitleFakultetas.BackColor = Color.Salmon;
                     throw new ArgumentNullException(txtTitleFakultetas.Text);
                 }
-                else if (txtAddressFakultetas.Text.Length > 38)
+                if (txtAddressFakultetas.Text.Length > 38)
                 {
                     txtAddressFakultetas.BackColor = Color.Salmon;
                     throw new ArgumentException("Adresas negali būti" + Environment.NewLine + "ilgesnis negu 38 simboliai");
                 }
-                else if (string.IsNullOrWhiteSpace(txtAddressFakultetas.Text))
+                if (string.IsNullOrWhiteSpace(txtAddressFakultetas.Text))
                 {
                     txtAddressFakultetas.BackColor = Color.Salmon;
                     throw new ArgumentNullException(txtAddressFakultetas.Text);
                 }
-                else if (!new System.Text.RegularExpressions.Regex(@"^\+370\d{8}$").IsMatch(txtPhoneNrFakultetas.Text))
+                if (!new System.Text.RegularExpressions.Regex(@"^\+370\d{8}$").IsMatch(txtPhoneNrFakultetas.Text))
                 {
                     txtPhoneNrFakultetas.BackColor = Color.Salmon;
                     throw new ArgumentException("Telefono numeris" + Environment.NewLine + "turi būti +370XXXXXXXX");
@@ -223,25 +222,6 @@ namespace UniversitySQL
             }
         }
 
-        private void TextBox_Click(object sender, EventArgs e)
-        {
-            TextBox box = (TextBox)sender;
-            tempTextBoxText = box.Text;
-            box.Text = "";
-            box.ForeColor = System.Drawing.Color.Black;
-        }
-
-        private void TextBox_LostFocus(object sender, EventArgs e)
-        {
-            TextBox box = (TextBox)sender;
-            if (String.IsNullOrEmpty(box.Text))
-            {
-                box.Text = tempTextBoxText;
-                box.ForeColor = System.Drawing.Color.Gray;
-            }
-
-        }
-
         private void btnAddDalykas_Click(object sender, EventArgs e)
         {
             txtTitleDalykas.BackColor = SystemColors.Control;
@@ -281,12 +261,12 @@ namespace UniversitySQL
                     txtTitleDalykas.BackColor = Color.Salmon;
                     throw new ArgumentException("Pavadinimas negali būti" + Environment.NewLine + "ilgesnis negu 30 simbolių");
                 }
-                else if (string.IsNullOrWhiteSpace(txtTitleDalykas.Text))
+                if (string.IsNullOrWhiteSpace(txtTitleDalykas.Text))
                 {
                     txtTitleDalykas.BackColor = Color.Salmon;
                     throw new ArgumentNullException(txtTitleDalykas.Text);
                 }
-                else if (Int16.Parse(txtCreditsDalykas.Text) < 1 || Int16.Parse(txtCreditsDalykas.Text) > 10)
+                if (Int16.Parse(txtCreditsDalykas.Text) < 1 || Int16.Parse(txtCreditsDalykas.Text) > 10)
                 {
                     txtCreditsDalykas.BackColor = Color.Salmon;
                     throw new ArgumentException("Dalyko kreditų skaičius" + Environment.NewLine + "privalo būti intervale (1-10)");
@@ -294,6 +274,7 @@ namespace UniversitySQL
             }
             catch (FormatException)
             {
+                txtCreditsDalykas.BackColor = Color.Salmon;
                 throw new ArgumentException("Kreditų kiekis turi būti skaičius!");
             }
             catch (Exception)
@@ -494,17 +475,17 @@ namespace UniversitySQL
                     txtNameDestytojas.BackColor = Color.Salmon;
                     throw new ArgumentException("Pavadinimas negali būti" + Environment.NewLine + "ilgesnis negu 15 simbolių");
                 }
-                else if (string.IsNullOrWhiteSpace(txtNameDestytojas.Text))
+                if (string.IsNullOrWhiteSpace(txtNameDestytojas.Text))
                 {
                     txtNameDestytojas.BackColor = Color.Salmon;
                     throw new ArgumentNullException(txtNameDestytojas.Text);
                 }
-                else if (txtSurnameDestytojas.Text.Length > 20)
+                if (txtSurnameDestytojas.Text.Length > 20)
                 {
                     txtSurnameDestytojas.BackColor = Color.Salmon;
                     throw new ArgumentException("Pavadinimas negali būti" + Environment.NewLine + "ilgesnis negu 20 simbolių");
                 }
-                else if (string.IsNullOrWhiteSpace(txtSurnameDestytojas.Text))
+                if (string.IsNullOrWhiteSpace(txtSurnameDestytojas.Text))
                 {
                     txtSurnameDestytojas.BackColor = Color.Salmon;
                     throw new ArgumentNullException(txtSurnameDestytojas.Text);
@@ -708,17 +689,17 @@ namespace UniversitySQL
                     txtNameStudentas.BackColor = Color.Salmon;
                     throw new ArgumentException("Pavadinimas negali būti" + Environment.NewLine + "ilgesnis negu 15 simbolių");
                 }
-                else if (string.IsNullOrWhiteSpace(txtNameStudentas.Text))
+                if (string.IsNullOrWhiteSpace(txtNameStudentas.Text))
                 {
                     txtNameDestytojas.BackColor = Color.Salmon;
                     throw new ArgumentNullException(txtNameStudentas.Text);
                 }
-                else if (txtSurnameStudentas.Text.Length > 20)
+                if (txtSurnameStudentas.Text.Length > 20)
                 {
                     txtSurnameStudentas.BackColor = Color.Salmon;
                     throw new ArgumentException("Pavadinimas negali būti" + Environment.NewLine + "ilgesnis negu 20 simbolių");
                 }
-                else if (string.IsNullOrWhiteSpace(txtSurnameStudentas.Text))
+                if (string.IsNullOrWhiteSpace(txtSurnameStudentas.Text))
                 {
                     txtSurnameStudentas.BackColor = Color.Salmon;
                     throw new ArgumentNullException(txtSurnameStudentas.Text);

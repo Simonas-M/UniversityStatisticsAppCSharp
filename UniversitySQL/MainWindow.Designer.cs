@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace UniversitySQL
+﻿namespace UniversitySQL
 {
     partial class MainWindow
     {
@@ -35,6 +33,7 @@ namespace UniversitySQL
             this.btnMinimize = new System.Windows.Forms.Button();
             this.lblUni = new System.Windows.Forms.Label();
             this.pnlRight = new System.Windows.Forms.Panel();
+            this.bntStudFaculties = new System.Windows.Forms.Button();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnStatistika = new System.Windows.Forms.Button();
@@ -99,6 +98,7 @@ namespace UniversitySQL
             // pnlRight
             // 
             this.pnlRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
+            this.pnlRight.Controls.Add(this.bntStudFaculties);
             this.pnlRight.Controls.Add(this.btnAddNew);
             this.pnlRight.Controls.Add(this.pictureBox1);
             this.pnlRight.Controls.Add(this.btnStatistika);
@@ -110,6 +110,22 @@ namespace UniversitySQL
             this.pnlRight.Name = "pnlRight";
             this.pnlRight.Size = new System.Drawing.Size(134, 386);
             this.pnlRight.TabIndex = 2;
+            // 
+            // bntStudFaculties
+            // 
+            this.bntStudFaculties.FlatAppearance.BorderSize = 0;
+            this.bntStudFaculties.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
+            this.bntStudFaculties.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(98)))), ((int)(((byte)(146)))));
+            this.bntStudFaculties.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bntStudFaculties.Font = new System.Drawing.Font("Trajan Pro", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntStudFaculties.Location = new System.Drawing.Point(0, 88);
+            this.bntStudFaculties.Name = "bntStudFaculties";
+            this.bntStudFaculties.Size = new System.Drawing.Size(134, 51);
+            this.bntStudFaculties.TabIndex = 2;
+            this.bntStudFaculties.Text = "Studentu fakultetai";
+            this.bntStudFaculties.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bntStudFaculties.UseVisualStyleBackColor = true;
+            this.bntStudFaculties.Click += new System.EventHandler(this.bntStudFaculties_Click);
             // 
             // btnAddNew
             // 
@@ -144,7 +160,7 @@ namespace UniversitySQL
             this.btnStatistika.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(98)))), ((int)(((byte)(146)))));
             this.btnStatistika.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStatistika.Font = new System.Drawing.Font("Trajan Pro", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStatistika.Location = new System.Drawing.Point(0, 115);
+            this.btnStatistika.Location = new System.Drawing.Point(0, 161);
             this.btnStatistika.Name = "btnStatistika";
             this.btnStatistika.Size = new System.Drawing.Size(134, 36);
             this.btnStatistika.TabIndex = 0;
@@ -160,7 +176,7 @@ namespace UniversitySQL
             this.btnDalykai.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(98)))), ((int)(((byte)(146)))));
             this.btnDalykai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDalykai.Font = new System.Drawing.Font("Trajan Pro", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDalykai.Location = new System.Drawing.Point(0, 86);
+            this.btnDalykai.Location = new System.Drawing.Point(0, 132);
             this.btnDalykai.Name = "btnDalykai";
             this.btnDalykai.Size = new System.Drawing.Size(134, 36);
             this.btnDalykai.TabIndex = 0;
@@ -309,7 +325,6 @@ namespace UniversitySQL
             this.dataGrid.ReadOnly = true;
             this.dataGrid.Size = new System.Drawing.Size(564, 379);
             this.dataGrid.TabIndex = 0;
-            this.dataGrid.AutoGenerateColumns = true;
             // 
             // MainWindow
             // 
@@ -367,6 +382,7 @@ namespace UniversitySQL
         private System.Windows.Forms.ComboBox cmbX;
         private System.Windows.Forms.ComboBox cmbY;
         private System.Windows.Forms.Label lblY;
+        private System.Windows.Forms.Button bntStudFaculties;
     }
 }
 

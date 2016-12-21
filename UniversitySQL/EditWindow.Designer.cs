@@ -193,6 +193,7 @@ namespace UniversitySQL
             this.txtPhoneNrFakultetas.Size = new System.Drawing.Size(226, 20);
             this.txtPhoneNrFakultetas.TabIndex = 2;
             this.txtPhoneNrFakultetas.Text = "Telefono Nr.";
+            this.txtPhoneNrFakultetas.ReadOnly = true;
             // 
             // txtAddressFakultetas
             // 

@@ -16,3 +16,5 @@ C:\Users\Simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversityS
 C:\Users\Simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\obj\Debug\UniversitySQL.csproj.GenerateResource.Cache
 C:\Users\Simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\obj\Debug\UniversitySQL.TaughtCoursesForm.resources
 C:\Users\Simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\obj\Debug\UniversitySQL.StudentCoursesForm.resources
+C:\Users\Simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\bin\Debug\Aspose.OCR.dll
+C:\Users\Simonas\documents\visual studio 2015\Projects\UniversitySQL\UniversitySQL\bin\Debug\Aspose.OCR.xml
